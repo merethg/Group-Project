@@ -1,0 +1,94 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace protype__groupwork_
+{
+    public partial class Form1 : Form
+    {
+        List<string> _starters = new List<string>();
+        List<string> _Mains = new List<string>();
+        List<string> _Desserts = new List<string>();
+        List<string> _Drinks = new List<string>();
+
+        public Form1()
+        {
+            InitializeComponent();
+            _starters.Add("Cream of wild mushroom soup");
+            _starters.Add("anouther starter");
+            _Mains.Add("cheese burger");
+            _Mains.Add("cheese and bacon burger");
+            _Mains.Add("pizza");
+            _Mains.Add("ETC.");
+            _Desserts.Add("tiramisu");
+            _Desserts.Add("chocolate cake");
+            _Desserts.Add("more cake");
+            _Drinks.Add("wine");
+            _Drinks.Add("pepsi");
+            _Drinks.Add("tea");
+
+
+            listBox1.DataSource = _starters;
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //add button
+            listBox2.Items.Add(listBox1.SelectedValue);
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+            //remove button
+                listBox2.Items.Remove(listBox2.SelectedItem);
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //order button 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //ignore
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //ignore 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //starter button 
+            listBox1.DataSource = _starters;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //main button
+            listBox1.DataSource = _Mains;
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //dessert button
+            listBox1.DataSource = _Desserts;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            //drinks button 
+            listBox1.DataSource = _Drinks;
+        }
+    }
+}
