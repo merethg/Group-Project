@@ -79,23 +79,44 @@ namespace Restaurant_Application
             txtDiners.Text = txtDiners.Text.Remove(txtDiners.Text.Length - 1, 1);
         }
 
-        private void btnEnter_Click(object sender, EventArgs e)
-        {
-            //Convert user input to integer
-            numberOfDiners = Convert.ToInt32(txtDiners.Text);
+        //private void btnEnter_Click(object sender, EventArgs e)
+        //{
+        //    //Convert user input to integer
+        //    numberOfDiners = Convert.ToInt32(txtDiners.Text);
 
-            if (txtDiners.Text != "" && !txtDiners.Text.StartsWith("0"))
-            {            
-                //open table selection form and pass number of diners
-                frmTableSelection tb = new frmTableSelection(numberOfDiners);
-                tb.Show();
-                this.Hide();
-            }
-            else
+        //    if (txtDiners.Text != "" && !txtDiners.Text.StartsWith("0"))
+        //    {            
+        //        //open table selection form and pass number of diners
+        //        frmTableSelection tb = new frmTableSelection(numberOfDiners);
+        //        tb.Show();
+        //        this.Hide();
+        //    }
+        //    else
+        //    {
+        //        lblError.Visible = true;
+        //        txtDiners.Text = "";
+        //    } 
+        //}
+
+        private void cmnOptions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmnOptions.SelectedIndex > -1)
             {
-                lblError.Visible = true;
-                txtDiners.Text = "";
-            } 
+                btnAccept.Enabled = true;
+            }
         }
+
+        private void frmWelcome_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+            frmTableSelection tbs = new frmTableSelection(cmnOptions.SelectedItem.ToString());
+            tbs.Show();
+            this.Hide();
+        }
+
     }
 }

@@ -35,7 +35,9 @@
             this.lblSearch = new System.Windows.Forms.Label();
             this.btnSelect = new System.Windows.Forms.Button();
             this.elapseTimer = new System.Windows.Forms.Timer(this.components);
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -81,11 +83,21 @@
             this.elapseTimer.Interval = 1000;
             this.elapseTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(53, 140);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(536, 246);
+            this.dataGridView1.TabIndex = 4;
+            // 
             // frmTableSelection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 505);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.lblDiners);
@@ -93,7 +105,9 @@
             this.Name = "frmTableSelection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmTableSelection";
+            this.Load += new System.EventHandler(this.frmTableSelection_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -106,5 +120,6 @@
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Timer elapseTimer;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

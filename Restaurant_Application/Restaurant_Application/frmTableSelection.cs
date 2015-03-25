@@ -14,17 +14,20 @@ namespace Restaurant_Application
     {
         int searchValue;
         int elapseTime = 5;
+        DataSet ds = new DataSet();
 
+        //default constructor
         public frmTableSelection()
         {
             InitializeComponent();
         }
 
-        public frmTableSelection(int intDiners)
+        //overload constructor
+        public frmTableSelection(string strDiners)
         {
             InitializeComponent();
-            lblDiners.Text = intDiners.ToString();
-            searchValue = intDiners;
+            lblDiners.Text = strDiners;
+            searchValue = Convert.ToInt32(strDiners);
 
             if (searchValue % 2 == 1)
             {
@@ -53,6 +56,28 @@ namespace Restaurant_Application
                 msg.Hide();
                 elapseTimer.Enabled = false;
             }
+        }
+
+        private void frmTableSelection_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
+                MySqlConnection myConn = new MySqlConnection(myConnection);
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
+                MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
+                myConn.Open();
+
+                myDataAdapter.Fill(ds);
+                dataGridView1.DataSource = ds.Tables[0];
+                dataGridView1.Refresh();
+                myConn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }  
         }
     }
 }
