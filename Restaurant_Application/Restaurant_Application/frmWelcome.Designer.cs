@@ -45,6 +45,8 @@
             this.btnEnter = new System.Windows.Forms.Button();
             this.txtDiners = new System.Windows.Forms.TextBox();
             this.lblError = new System.Windows.Forms.Label();
+            this.cmnOptions = new System.Windows.Forms.ComboBox();
+            this.btnAccept = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -67,7 +69,7 @@
             // 
             // btn1
             // 
-            this.btn1.Location = new System.Drawing.Point(237, 224);
+            this.btn1.Location = new System.Drawing.Point(40, 228);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(48, 42);
             this.btn1.TabIndex = 2;
@@ -77,7 +79,7 @@
             // 
             // btn2
             // 
-            this.btn2.Location = new System.Drawing.Point(320, 224);
+            this.btn2.Location = new System.Drawing.Point(123, 228);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(48, 42);
             this.btn2.TabIndex = 3;
@@ -87,7 +89,7 @@
             // 
             // btn3
             // 
-            this.btn3.Location = new System.Drawing.Point(391, 224);
+            this.btn3.Location = new System.Drawing.Point(194, 228);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(48, 42);
             this.btn3.TabIndex = 4;
@@ -97,7 +99,7 @@
             // 
             // btn5
             // 
-            this.btn5.Location = new System.Drawing.Point(320, 284);
+            this.btn5.Location = new System.Drawing.Point(123, 288);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(48, 42);
             this.btn5.TabIndex = 5;
@@ -107,7 +109,7 @@
             // 
             // btn4
             // 
-            this.btn4.Location = new System.Drawing.Point(237, 284);
+            this.btn4.Location = new System.Drawing.Point(40, 288);
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(48, 42);
             this.btn4.TabIndex = 6;
@@ -117,7 +119,7 @@
             // 
             // btn6
             // 
-            this.btn6.Location = new System.Drawing.Point(391, 284);
+            this.btn6.Location = new System.Drawing.Point(194, 288);
             this.btn6.Name = "btn6";
             this.btn6.Size = new System.Drawing.Size(48, 42);
             this.btn6.TabIndex = 7;
@@ -127,7 +129,7 @@
             // 
             // btn9
             // 
-            this.btn9.Location = new System.Drawing.Point(391, 344);
+            this.btn9.Location = new System.Drawing.Point(194, 348);
             this.btn9.Name = "btn9";
             this.btn9.Size = new System.Drawing.Size(48, 42);
             this.btn9.TabIndex = 8;
@@ -137,7 +139,7 @@
             // 
             // btn8
             // 
-            this.btn8.Location = new System.Drawing.Point(320, 344);
+            this.btn8.Location = new System.Drawing.Point(123, 348);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(48, 42);
             this.btn8.TabIndex = 9;
@@ -147,7 +149,7 @@
             // 
             // btn7
             // 
-            this.btn7.Location = new System.Drawing.Point(237, 344);
+            this.btn7.Location = new System.Drawing.Point(40, 348);
             this.btn7.Name = "btn7";
             this.btn7.Size = new System.Drawing.Size(48, 42);
             this.btn7.TabIndex = 10;
@@ -157,7 +159,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(237, 406);
+            this.btnClear.Location = new System.Drawing.Point(40, 410);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(61, 42);
             this.btnClear.TabIndex = 11;
@@ -167,7 +169,7 @@
             // 
             // btn0
             // 
-            this.btn0.Location = new System.Drawing.Point(320, 406);
+            this.btn0.Location = new System.Drawing.Point(123, 410);
             this.btn0.Name = "btn0";
             this.btn0.Size = new System.Drawing.Size(48, 42);
             this.btn0.TabIndex = 12;
@@ -177,7 +179,7 @@
             // 
             // btnBackSpace
             // 
-            this.btnBackSpace.Location = new System.Drawing.Point(379, 406);
+            this.btnBackSpace.Location = new System.Drawing.Point(182, 410);
             this.btnBackSpace.Name = "btnBackSpace";
             this.btnBackSpace.Size = new System.Drawing.Size(60, 42);
             this.btnBackSpace.TabIndex = 13;
@@ -187,17 +189,16 @@
             // 
             // btnEnter
             // 
-            this.btnEnter.Location = new System.Drawing.Point(295, 482);
+            this.btnEnter.Location = new System.Drawing.Point(98, 486);
             this.btnEnter.Name = "btnEnter";
             this.btnEnter.Size = new System.Drawing.Size(105, 42);
             this.btnEnter.TabIndex = 14;
             this.btnEnter.Text = "Enter";
             this.btnEnter.UseVisualStyleBackColor = true;
-            this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             // 
             // txtDiners
             // 
-            this.txtDiners.Location = new System.Drawing.Point(300, 141);
+            this.txtDiners.Location = new System.Drawing.Point(98, 151);
             this.txtDiners.Name = "txtDiners";
             this.txtDiners.Size = new System.Drawing.Size(100, 22);
             this.txtDiners.TabIndex = 15;
@@ -205,18 +206,51 @@
             // lblError
             // 
             this.lblError.AutoSize = true;
-            this.lblError.Location = new System.Drawing.Point(234, 183);
+            this.lblError.Location = new System.Drawing.Point(37, 187);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(242, 17);
             this.lblError.TabIndex = 16;
             this.lblError.Text = "Please input a valid number of diners";
             this.lblError.Visible = false;
             // 
+            // cmnOptions
+            // 
+            this.cmnOptions.FormattingEnabled = true;
+            this.cmnOptions.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.cmnOptions.Location = new System.Drawing.Point(368, 151);
+            this.cmnOptions.Name = "cmnOptions";
+            this.cmnOptions.Size = new System.Drawing.Size(193, 24);
+            this.cmnOptions.TabIndex = 17;
+            this.cmnOptions.SelectedIndexChanged += new System.EventHandler(this.cmnOptions_SelectedIndexChanged);
+            // 
+            // btnAccept
+            // 
+            this.btnAccept.Enabled = false;
+            this.btnAccept.Location = new System.Drawing.Point(433, 367);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(75, 23);
+            this.btnAccept.TabIndex = 18;
+            this.btnAccept.Text = "Enter";
+            this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
+            // 
             // frmWelcome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(711, 552);
+            this.Controls.Add(this.btnAccept);
+            this.Controls.Add(this.cmnOptions);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.txtDiners);
             this.Controls.Add(this.btnEnter);
@@ -237,6 +271,7 @@
             this.Name = "frmWelcome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.frmWelcome_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,6 +296,8 @@
         private System.Windows.Forms.Button btnEnter;
         private System.Windows.Forms.TextBox txtDiners;
         private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.ComboBox cmnOptions;
+        private System.Windows.Forms.Button btnAccept;
     }
 }
 

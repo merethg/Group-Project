@@ -20,11 +20,11 @@ namespace Restaurant_Application
             InitializeComponent();
         }
 
-        public frmTableSelection(int intDiners)
+        public frmTableSelection(string strDiners)
         {
             InitializeComponent();
-            lblDiners.Text = intDiners.ToString();
-            searchValue = intDiners;
+            lblDiners.Text = strDiners;
+            searchValue = Convert.ToInt32(strDiners);
 
             if (searchValue % 2 == 1)
             {
