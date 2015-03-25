@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTableSelection));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDiners = new System.Windows.Forms.Label();
             this.lblSearch = new System.Windows.Forms.Label();
             this.btnSelect = new System.Windows.Forms.Button();
+            this.elapseTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,24 +68,30 @@
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(254, 302);
+            this.btnSelect.Location = new System.Drawing.Point(271, 436);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(75, 23);
+            this.btnSelect.Size = new System.Drawing.Size(107, 38);
             this.btnSelect.TabIndex = 3;
             this.btnSelect.Text = "Select";
             this.btnSelect.UseVisualStyleBackColor = true;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
+            // elapseTimer
+            // 
+            this.elapseTimer.Interval = 1000;
+            this.elapseTimer.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // frmTableSelection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 473);
+            this.ClientSize = new System.Drawing.Size(660, 505);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.lblDiners);
             this.Controls.Add(this.pictureBox1);
             this.Name = "frmTableSelection";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmTableSelection";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -97,5 +105,6 @@
         private System.Windows.Forms.Label lblDiners;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Button btnSelect;
+        private System.Windows.Forms.Timer elapseTimer;
     }
 }
