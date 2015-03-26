@@ -56,6 +56,8 @@
             this.pbTable17 = new System.Windows.Forms.PictureBox();
             this.pbTable16 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.labelTest = new System.Windows.Forms.Label();
+            this.tmrNoTables = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTable2)).BeginInit();
@@ -391,11 +393,25 @@
             this.label1.TabIndex = 28;
             this.label1.Text = "label1";
             // 
+            // labelTest
+            // 
+            this.labelTest.AutoSize = true;
+            this.labelTest.Location = new System.Drawing.Point(431, 46);
+            this.labelTest.Name = "labelTest";
+            this.labelTest.Size = new System.Drawing.Size(46, 17);
+            this.labelTest.TabIndex = 29;
+            this.labelTest.Text = "label2";
+            // 
+            // tmrNoTables
+            // 
+            this.tmrNoTables.Tick += new System.EventHandler(this.tmrNoTables_Tick);
+            // 
             // frmTableSelection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 505);
+            this.Controls.Add(this.labelTest);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbTable20);
             this.Controls.Add(this.pbTable19);
@@ -479,5 +495,7 @@
         private System.Windows.Forms.PictureBox pbTable17;
         private System.Windows.Forms.PictureBox pbTable16;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelTest;
+        private System.Windows.Forms.Timer tmrNoTables;
     }
 }
