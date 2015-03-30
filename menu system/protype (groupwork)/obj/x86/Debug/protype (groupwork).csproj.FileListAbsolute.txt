@@ -1,0 +1,24 @@
+\\srv124\students$\259345\my documents\visual studio 2010\Projects\protype (groupwork)\protype (groupwork)\obj\x86\Debug\protype__groupwork_.Form1.resources
+\\srv124\students$\259345\my documents\visual studio 2010\Projects\protype (groupwork)\protype (groupwork)\obj\x86\Debug\protype__groupwork_.Properties.Resources.resources
+\\srv124\students$\259345\my documents\visual studio 2010\Projects\protype (groupwork)\protype (groupwork)\obj\x86\Debug\protype (groupwork).csproj.GenerateResource.Cache
+\\srv124\students$\259345\my documents\visual studio 2010\Projects\protype (groupwork)\protype (groupwork)\bin\Debug\protype (groupwork).exe
+\\srv124\students$\259345\my documents\visual studio 2010\Projects\protype (groupwork)\protype (groupwork)\bin\Debug\protype (groupwork).pdb
+\\srv124\students$\259345\my documents\visual studio 2010\Projects\protype (groupwork)\protype (groupwork)\obj\x86\Debug\protype (groupwork).exe
+\\srv124\students$\259345\my documents\visual studio 2010\Projects\protype (groupwork)\protype (groupwork)\obj\x86\Debug\protype (groupwork).pdb
+F:\protype (groupwork)\protype (groupwork)\obj\x86\Debug\protype (groupwork).exe
+F:\protype (groupwork)\protype (groupwork)\obj\x86\Debug\protype (groupwork).pdb
+F:\protype (groupwork)\protype (groupwork)\bin\Debug\protype (groupwork).exe
+F:\protype (groupwork)\protype (groupwork)\bin\Debug\protype (groupwork).pdb
+F:\protype (groupwork)\protype (groupwork)\obj\x86\Debug\protype__groupwork_.Form1.resources
+F:\protype (groupwork)\protype (groupwork)\obj\x86\Debug\protype__groupwork_.Properties.Resources.resources
+F:\protype (groupwork)\protype (groupwork)\obj\x86\Debug\protype (groupwork).csproj.GenerateResource.Cache
+E:\menu system\protype (groupwork)\obj\x86\Debug\protype (groupwork).exe
+E:\menu system\protype (groupwork)\obj\x86\Debug\protype (groupwork).pdb
+E:\menu system\protype (groupwork)\bin\Debug\protype (groupwork).exe
+E:\menu system\protype (groupwork)\bin\Debug\protype (groupwork).pdb
+E:\menu system\protype (groupwork)\obj\x86\Debug\protype__groupwork_.Form1.resources
+E:\menu system\protype (groupwork)\obj\x86\Debug\protype__groupwork_.Properties.Resources.resources
+E:\menu system\protype (groupwork)\bin\Debug\MySql.Data.dll
+E:\menu system\protype (groupwork)\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\menu system\protype (groupwork)\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\menu system\protype (groupwork)\obj\x86\Debug\GenerateResource.write.1.tlog
