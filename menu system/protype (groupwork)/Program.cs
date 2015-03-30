@@ -15,7 +15,8 @@ namespace protype__groupwork_
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            //Application.Run(new frmMenus());
+            Application.Run(new FrmTableIdentification());
         }
     }
 }
