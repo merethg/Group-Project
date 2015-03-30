@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using MySQLClass;
 
 namespace protype__groupwork_
 {
@@ -14,7 +15,9 @@ namespace protype__groupwork_
     public partial class frmMenus : Form
     {
         double total = 0.00;
+        string strTotal;
         DataSet ds = new DataSet();
+        
 
         int tablecheck = 0;
         
@@ -30,9 +33,17 @@ namespace protype__groupwork_
             //add button
             //listBox2.Items.Add(listBox1.SelectedValue);
             listBox2.Items.Add(listBox1.SelectedItem);
-            total = total + Convert.ToDouble(listBox1.Items[listBox1.SelectedIndex+2].ToString());
-            label1.Text = "Total = £ " + total.ToString("#.##"); 
+            //total = total + Convert.ToDouble(listBox1.Items[listBox1.SelectedIndex+2].ToString());
+            string cost = listBox1.Items[listBox1.SelectedIndex + 2].ToString();
+            cost = cost.Remove(0, 1);
+            double dblCost = Convert.ToDouble(cost);
             
+            total = total + dblCost;
+
+            strTotal = String.Format("{0:C}", total);
+
+            label1.Text = "Total = " + strTotal;
+            //label1.Text = "Total = £ " + total.ToString("#.##");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -60,7 +71,12 @@ namespace protype__groupwork_
 
         private void button3_Click(object sender, EventArgs e)
         {
+            MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
             //order button 
+            foreach (string s in listBox2.Items)
+            {
+                sqlClient.Insert("order_item", "Order_ID, Item_Name", "'1', '" + s + "'");
+            }
         }
 
 #endregion
@@ -181,9 +197,10 @@ namespace protype__groupwork_
                     {
                         listBox1.Items.Add(reader.GetString(1));
                         listBox1.Items.Add(reader.GetString(2));
-                        decimal price = Convert.ToDecimal(reader.GetString(6));
+                        double price = Convert.ToDouble(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
+
                         listBox1.Items.Add("");                        
                     }
                     myConn.Close();
@@ -620,6 +637,8 @@ namespace protype__groupwork_
         private void btnClear_Click(object sender, EventArgs e)
         {
             listBox2.Items.Clear();
+            label1.Text = "Total = £0.00";
+            total = 0.00;
         }
     }
 }
