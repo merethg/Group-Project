@@ -13,3 +13,5 @@ F:\College-Uni work\Group project\FrontOfHouseApp\FrontOfHouseApp\obj\x86\Debug\
 F:\College-Uni work\Group project\FrontOfHouseApp\FrontOfHouseApp\obj\x86\Debug\FrontOfHouseApp.Properties.Resources.resources
 F:\College-Uni work\Group project\FrontOfHouseApp\FrontOfHouseApp\obj\x86\Debug\FrontOfHouseApp.csproj.GenerateResource.Cache
 E:\College-Uni work\Group project\FrontOfHouseApp\FrontOfHouseApp\obj\x86\Debug\FrontOfHouseApp.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\GitHub\Group-Project\FrontOfHouseV0.5\FrontOfHouseApp\FrontOfHouseApp\obj\x86\Debug\FrontOfHouseApp.exe
+C:\Users\Daniel\Documents\GitHub\Group-Project\FrontOfHouseV0.5\FrontOfHouseApp\FrontOfHouseApp\obj\x86\Debug\FrontOfHouseApp.pdb
