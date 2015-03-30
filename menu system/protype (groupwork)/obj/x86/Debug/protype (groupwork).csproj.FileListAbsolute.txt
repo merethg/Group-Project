@@ -22,3 +22,11 @@ E:\menu system\protype (groupwork)\bin\Debug\MySql.Data.dll
 E:\menu system\protype (groupwork)\obj\x86\Debug\ResolveAssemblyReference.cache
 E:\menu system\protype (groupwork)\obj\x86\Debug\GenerateResource.read.1.tlog
 E:\menu system\protype (groupwork)\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Daniel\Documents\GitHub\Group-Project\menu system\protype (groupwork)\obj\x86\Debug\protype (groupwork).exe
+C:\Users\Daniel\Documents\GitHub\Group-Project\menu system\protype (groupwork)\obj\x86\Debug\protype (groupwork).pdb
+C:\Users\Daniel\Documents\GitHub\Group-Project\menu system\protype (groupwork)\bin\Debug\protype (groupwork).exe
+C:\Users\Daniel\Documents\GitHub\Group-Project\menu system\protype (groupwork)\bin\Debug\protype (groupwork).pdb
+C:\Users\Daniel\Documents\GitHub\Group-Project\menu system\protype (groupwork)\obj\x86\Debug\protype (groupwork).csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\GitHub\Group-Project\menu system\protype (groupwork)\obj\x86\Debug\protype__groupwork_.Form1.resources
+C:\Users\Daniel\Documents\GitHub\Group-Project\menu system\protype (groupwork)\obj\x86\Debug\protype__groupwork_.Properties.Resources.resources
+C:\Users\Daniel\Documents\GitHub\Group-Project\menu system\protype (groupwork)\obj\x86\Debug\protype (groupwork).csproj.GenerateResource.Cache

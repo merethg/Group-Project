@@ -15,8 +15,6 @@ namespace protype__groupwork_
     {
         double total = 0.00;
         DataSet ds = new DataSet();
-        
-
 
         int tablecheck = 0;
         
@@ -149,7 +147,7 @@ namespace protype__groupwork_
         //to change server info such as ip or port change the string below.
         //put the ip after datasorce and the port after port.
         //change the username after username and the password to the server password.
-        string conection = "datasource={0};port={1};username=Conrad;password=Conrad2015";
+        string conection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
 
         //pizza and hot drinks
         private void button8_Click(object sender, EventArgs e)
@@ -168,7 +166,7 @@ namespace protype__groupwork_
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                     //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
-                    MySqlCommand comand = new MySqlCommand("select Item_Name from demo.menu_item where Item_Type = 'Pizza Rustica','Classic Pizza','Calzone','Skinny Pizza' ;", myConn);
+                    MySqlCommand comand = new MySqlCommand("select Item_Name from demo.menu_item where Item_Type = 'Pizza Rustica';", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
 
@@ -176,9 +174,10 @@ namespace protype__groupwork_
 
                     while (reader.Read())
                     {
-                        listBox1.Items.Add(reader.GetString(1));
-                        listBox1.Items.Add(reader.GetString(2));
-                        listBox1.Items.Add(reader.GetString(6));                        
+                        listBox1.Items.Add(reader.GetString(0));
+                        //listBox1.Items.Add(reader.GetString(1));
+                        //listBox1.Items.Add(reader.GetString(2));
+                        //listBox1.Items.Add(reader.GetString(6));                        
                     }
                     myConn.Close();
                 }

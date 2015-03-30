@@ -8,3 +8,5 @@ C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Restaurant_Applicat
 C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Restaurant_Application\Restaurant_Application\obj\x86\Debug\Restaurant_Application.frmTableSelection.resources
 C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Restaurant_Application\Restaurant_Application\obj\x86\Debug\Restaurant_Application.frmWelcome.resources
 C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Restaurant_Application\Restaurant_Application\obj\x86\Debug\Restaurant_Application.frmMessageBox.resources
+C:\Users\Daniel\Documents\GitHub\Group-Project\Restaurant_Application\Restaurant_Application\obj\x86\Debug\Restaurant_Application.exe
+C:\Users\Daniel\Documents\GitHub\Group-Project\Restaurant_Application\Restaurant_Application\obj\x86\Debug\Restaurant_Application.pdb
