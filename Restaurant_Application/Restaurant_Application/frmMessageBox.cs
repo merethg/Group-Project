@@ -11,17 +11,9 @@ namespace Restaurant_Application
 {
     public partial class frmMessageBox : Form
     {
-        public string message = "";
-
         public frmMessageBox()
         {
             InitializeComponent();
-        }
-
-        public frmMessageBox(string strText)
-        {
-            InitializeComponent();
-            label1.Text = strText;
         }
     }
 }

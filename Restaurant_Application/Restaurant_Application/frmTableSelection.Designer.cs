@@ -35,6 +35,7 @@
             this.lblSearch = new System.Windows.Forms.Label();
             this.btnSelect = new System.Windows.Forms.Button();
             this.elapseTimer = new System.Windows.Forms.Timer(this.components);
+            this.lblTest = new System.Windows.Forms.Label();
             this.pbTable1 = new System.Windows.Forms.PictureBox();
             this.pbTable2 = new System.Windows.Forms.PictureBox();
             this.pbTable3 = new System.Windows.Forms.PictureBox();
@@ -55,9 +56,6 @@
             this.pbTable18 = new System.Windows.Forms.PictureBox();
             this.pbTable17 = new System.Windows.Forms.PictureBox();
             this.pbTable16 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.labelTest = new System.Windows.Forms.Label();
-            this.tmrNoTables = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTable2)).BeginInit();
@@ -94,7 +92,7 @@
             // lblDiners
             // 
             this.lblDiners.AutoSize = true;
-            this.lblDiners.Location = new System.Drawing.Point(147, 12);
+            this.lblDiners.Location = new System.Drawing.Point(147, 26);
             this.lblDiners.Name = "lblDiners";
             this.lblDiners.Size = new System.Drawing.Size(46, 17);
             this.lblDiners.TabIndex = 1;
@@ -103,7 +101,7 @@
             // lblSearch
             // 
             this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(147, 46);
+            this.lblSearch.Location = new System.Drawing.Point(147, 68);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(46, 17);
             this.lblSearch.TabIndex = 2;
@@ -111,7 +109,7 @@
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(21, 225);
+            this.btnSelect.Location = new System.Drawing.Point(2, 230);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(107, 38);
             this.btnSelect.TabIndex = 3;
@@ -124,6 +122,15 @@
             this.elapseTimer.Interval = 1000;
             this.elapseTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // lblTest
+            // 
+            this.lblTest.AutoSize = true;
+            this.lblTest.Location = new System.Drawing.Point(378, 68);
+            this.lblTest.Name = "lblTest";
+            this.lblTest.Size = new System.Drawing.Size(46, 17);
+            this.lblTest.TabIndex = 5;
+            this.lblTest.Text = "label1";
+            // 
             // pbTable1
             // 
             this.pbTable1.BackColor = System.Drawing.Color.Red;
@@ -135,7 +142,6 @@
             this.pbTable1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable1.TabIndex = 6;
             this.pbTable1.TabStop = false;
-            this.pbTable1.Click += new System.EventHandler(this.pbTable1_Click);
             // 
             // pbTable2
             // 
@@ -148,7 +154,6 @@
             this.pbTable2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable2.TabIndex = 9;
             this.pbTable2.TabStop = false;
-            this.pbTable2.Click += new System.EventHandler(this.pbTable2_Click);
             // 
             // pbTable3
             // 
@@ -161,7 +166,6 @@
             this.pbTable3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable3.TabIndex = 10;
             this.pbTable3.TabStop = false;
-            this.pbTable3.Click += new System.EventHandler(this.pbTable3_Click);
             // 
             // pbTable4
             // 
@@ -174,7 +178,6 @@
             this.pbTable4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable4.TabIndex = 11;
             this.pbTable4.TabStop = false;
-            this.pbTable4.Click += new System.EventHandler(this.pbTable4_Click);
             // 
             // pbTable5
             // 
@@ -187,7 +190,6 @@
             this.pbTable5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable5.TabIndex = 12;
             this.pbTable5.TabStop = false;
-            this.pbTable5.Click += new System.EventHandler(this.pbTable5_Click);
             // 
             // pbTable10
             // 
@@ -200,7 +202,6 @@
             this.pbTable10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable10.TabIndex = 17;
             this.pbTable10.TabStop = false;
-            this.pbTable10.Click += new System.EventHandler(this.pbTable10_Click);
             // 
             // pbTable9
             // 
@@ -213,7 +214,6 @@
             this.pbTable9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable9.TabIndex = 16;
             this.pbTable9.TabStop = false;
-            this.pbTable9.Click += new System.EventHandler(this.pbTable9_Click);
             // 
             // pbTable8
             // 
@@ -226,7 +226,6 @@
             this.pbTable8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable8.TabIndex = 15;
             this.pbTable8.TabStop = false;
-            this.pbTable8.Click += new System.EventHandler(this.pbTable8_Click);
             // 
             // pbTable7
             // 
@@ -239,7 +238,6 @@
             this.pbTable7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable7.TabIndex = 14;
             this.pbTable7.TabStop = false;
-            this.pbTable7.Click += new System.EventHandler(this.pbTable7_Click);
             // 
             // pbTable6
             // 
@@ -252,7 +250,6 @@
             this.pbTable6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable6.TabIndex = 13;
             this.pbTable6.TabStop = false;
-            this.pbTable6.Click += new System.EventHandler(this.pbTable6_Click);
             // 
             // pbTable15
             // 
@@ -265,7 +262,6 @@
             this.pbTable15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable15.TabIndex = 22;
             this.pbTable15.TabStop = false;
-            this.pbTable15.Click += new System.EventHandler(this.pbTable15_Click);
             // 
             // pbTable14
             // 
@@ -278,7 +274,6 @@
             this.pbTable14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable14.TabIndex = 21;
             this.pbTable14.TabStop = false;
-            this.pbTable14.Click += new System.EventHandler(this.pbTable14_Click);
             // 
             // pbTable13
             // 
@@ -291,7 +286,6 @@
             this.pbTable13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable13.TabIndex = 20;
             this.pbTable13.TabStop = false;
-            this.pbTable13.Click += new System.EventHandler(this.pbTable13_Click);
             // 
             // pbTable12
             // 
@@ -304,7 +298,6 @@
             this.pbTable12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable12.TabIndex = 19;
             this.pbTable12.TabStop = false;
-            this.pbTable12.Click += new System.EventHandler(this.pbTable12_Click);
             // 
             // pbTable11
             // 
@@ -317,7 +310,6 @@
             this.pbTable11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable11.TabIndex = 18;
             this.pbTable11.TabStop = false;
-            this.pbTable11.Click += new System.EventHandler(this.pbTable11_Click);
             // 
             // pbTable20
             // 
@@ -330,7 +322,6 @@
             this.pbTable20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable20.TabIndex = 27;
             this.pbTable20.TabStop = false;
-            this.pbTable20.Click += new System.EventHandler(this.pbTable20_Click);
             // 
             // pbTable19
             // 
@@ -343,7 +334,6 @@
             this.pbTable19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable19.TabIndex = 26;
             this.pbTable19.TabStop = false;
-            this.pbTable19.Click += new System.EventHandler(this.pbTable19_Click);
             // 
             // pbTable18
             // 
@@ -356,7 +346,6 @@
             this.pbTable18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable18.TabIndex = 25;
             this.pbTable18.TabStop = false;
-            this.pbTable18.Click += new System.EventHandler(this.pbTable18_Click);
             // 
             // pbTable17
             // 
@@ -369,7 +358,6 @@
             this.pbTable17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable17.TabIndex = 24;
             this.pbTable17.TabStop = false;
-            this.pbTable17.Click += new System.EventHandler(this.pbTable17_Click);
             // 
             // pbTable16
             // 
@@ -382,37 +370,12 @@
             this.pbTable16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbTable16.TabIndex = 23;
             this.pbTable16.TabStop = false;
-            this.pbTable16.Click += new System.EventHandler(this.pbTable16_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(147, 82);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "label1";
-            // 
-            // labelTest
-            // 
-            this.labelTest.AutoSize = true;
-            this.labelTest.Location = new System.Drawing.Point(431, 46);
-            this.labelTest.Name = "labelTest";
-            this.labelTest.Size = new System.Drawing.Size(46, 17);
-            this.labelTest.TabIndex = 29;
-            this.labelTest.Text = "label2";
-            // 
-            // tmrNoTables
-            // 
-            this.tmrNoTables.Tick += new System.EventHandler(this.tmrNoTables_Tick);
             // 
             // frmTableSelection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 505);
-            this.Controls.Add(this.labelTest);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.pbTable20);
             this.Controls.Add(this.pbTable19);
             this.Controls.Add(this.pbTable18);
@@ -433,6 +396,7 @@
             this.Controls.Add(this.pbTable3);
             this.Controls.Add(this.pbTable2);
             this.Controls.Add(this.pbTable1);
+            this.Controls.Add(this.lblTest);
             this.Controls.Add(this.btnSelect);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.lblDiners);
@@ -474,6 +438,7 @@
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Timer elapseTimer;
+        private System.Windows.Forms.Label lblTest;
         private System.Windows.Forms.PictureBox pbTable1;
         private System.Windows.Forms.PictureBox pbTable2;
         private System.Windows.Forms.PictureBox pbTable3;
@@ -494,8 +459,5 @@
         private System.Windows.Forms.PictureBox pbTable18;
         private System.Windows.Forms.PictureBox pbTable17;
         private System.Windows.Forms.PictureBox pbTable16;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label labelTest;
-        private System.Windows.Forms.Timer tmrNoTables;
     }
 }
