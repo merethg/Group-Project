@@ -26,10 +26,23 @@ namespace Restaurant_Application
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
-            frmTableSelection tbs = new frmTableSelection(cmnOptions.SelectedItem.ToString());
+            string numOfDiners = cmnOptions.SelectedItem.ToString();
+            string[] diners = numOfDiners.Split(' ');
+
+            frmTableSelection tbs = new frmTableSelection(diners[0]);
             tbs.Show();
             this.Hide();
         }
 
+        private void frmWelcome_Load(object sender, EventArgs e)
+        {
+            btnAccept.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            cmnOptions.SelectedIndex = 1;
+
+            lblWelcome.Left = (this.ClientSize.Width - lblWelcome.Width) / 2;
+            lbluserMessage.Left = (this.ClientSize.Width - lbluserMessage.Width) / 2;
+            cmnOptions.Left = (this.ClientSize.Width - cmnOptions.Width) / 2;
+            btnAccept.Left  = (this.ClientSize.Width - btnAccept.Width) / 2;
+        }
     }
 }
