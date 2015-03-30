@@ -19,12 +19,10 @@ namespace protype__groupwork_
         int tablecheck = 0;
         
         public Form1()
-        {
-            
+        {            
             InitializeComponent();
-
-
         }
+
         #region customer list
 
         private void button1_Click(object sender, EventArgs e)
@@ -152,6 +150,7 @@ namespace protype__groupwork_
         //pizza and hot drinks
         private void button8_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             if (tablecheck == 2)
             {
                 //pizza
@@ -165,8 +164,7 @@ namespace protype__groupwork_
                     string myConnection = conection;
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                    //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
-                    MySqlCommand comand = new MySqlCommand("select Item_Name from demo.menu_item where Item_Type = 'Pizza Rustica';", myConn);
+                    MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Pizza' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
 
@@ -174,10 +172,9 @@ namespace protype__groupwork_
 
                     while (reader.Read())
                     {
-                        listBox1.Items.Add(reader.GetString(0));
-                        //listBox1.Items.Add(reader.GetString(1));
-                        //listBox1.Items.Add(reader.GetString(2));
-                        //listBox1.Items.Add(reader.GetString(6));                        
+                        listBox1.Items.Add(reader.GetString(1));
+                        listBox1.Items.Add(reader.GetString(2));
+                        listBox1.Items.Add(reader.GetString(6));                        
                     }
                     myConn.Close();
                 }
@@ -197,7 +194,7 @@ namespace protype__groupwork_
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                     //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
-                    MySqlCommand comand = new MySqlCommand("select Item_Name from demo.menu_item where Item_Type = 'Hot Drinks' ;", myConn);
+                    MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Hot Drinks' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
 
@@ -222,6 +219,7 @@ namespace protype__groupwork_
         //nibbles, pasta and desserts
         private void button9_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             if (tablecheck == 1)
             {
                 //bread/ nibbles
@@ -231,7 +229,7 @@ namespace protype__groupwork_
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                     //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
-                    MySqlCommand comand = new MySqlCommand("select Item_Name from demo.menu_item where Item_Type = 'Bread + Nibbles' ;", myConn);
+                    MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Bread + Nibbles' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
 
@@ -259,7 +257,7 @@ namespace protype__groupwork_
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                     //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
-                    MySqlCommand comand = new MySqlCommand("select Item_Name from demo.menu_item where Item_Type = 'Al Forno','Risotto' ;", myConn);
+                    MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Pasta' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
 
@@ -287,7 +285,7 @@ namespace protype__groupwork_
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                     //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
-                    MySqlCommand comand = new MySqlCommand("select Item_Name from demo.menu_item where Item_Type = 'Dessert' ;", myConn);
+                    MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Dessert' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
 
@@ -311,6 +309,7 @@ namespace protype__groupwork_
         //meat and soft drinks
         private void button10_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             if (tablecheck == 2)
             {
                 //meat
@@ -320,7 +319,7 @@ namespace protype__groupwork_
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                     //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
-                    MySqlCommand comand = new MySqlCommand("select Item_Name from demo.menu_item where Item_Type = 'Meat + Fish' ;", myConn);
+                    MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Meat + Fish' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
 
@@ -348,7 +347,7 @@ namespace protype__groupwork_
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                     //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
-                    MySqlCommand comand = new MySqlCommand("select Item_Name from demo.menu_item where Item_Type = 'Soft Drinks' ;", myConn);
+                    MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Soft Drinks' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
 
@@ -372,6 +371,7 @@ namespace protype__groupwork_
         //starters, sides nad sundaes
         private void button11_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             if (tablecheck == 1)
             {
                 //starters
@@ -381,7 +381,7 @@ namespace protype__groupwork_
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                     //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
-                    MySqlCommand comand = new MySqlCommand("select Item_Name from demo.menu_item where Item_Type = 'Starters' ;", myConn);
+                    MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Starters' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
 
@@ -409,7 +409,7 @@ namespace protype__groupwork_
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                     //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
-                    MySqlCommand comand = new MySqlCommand("select Item_Name from demo.menu_item where Item_Type = 'Sides' ;", myConn);
+                    MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Sides' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
 
@@ -437,7 +437,7 @@ namespace protype__groupwork_
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                     //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
-                    MySqlCommand comand = new MySqlCommand("select Item_Name from demo.menu_item where Item_Type = 'Gelato Sundaes' ;", myConn);
+                    MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Gelato Sundaes' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
 
@@ -461,6 +461,7 @@ namespace protype__groupwork_
         //salads and alcohol
         private void button12_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             if (tablecheck == 2)
             {
                 //salads
@@ -470,7 +471,7 @@ namespace protype__groupwork_
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                     //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
-                    MySqlCommand comand = new MySqlCommand("select Item_Name from demo.menu_item where Item_Type = 'Salad' ;", myConn);
+                    MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Salad' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
 
@@ -498,7 +499,7 @@ namespace protype__groupwork_
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                     //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
-                    MySqlCommand comand = new MySqlCommand("select Item_Name from demo.menu_item where Item_Type = 'Beer + Cider' ;", myConn);
+                    MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Beer + Cider' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
 
