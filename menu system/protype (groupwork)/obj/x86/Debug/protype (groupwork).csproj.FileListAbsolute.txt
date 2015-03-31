@@ -39,3 +39,4 @@ C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\menu system\protype
 C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\menu system\protype (groupwork)\obj\x86\Debug\protype (groupwork).csproj.GenerateResource.Cache
 C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\menu system\protype (groupwork)\obj\x86\Debug\protype__groupwork_.FrmTableIdentification.resources
 C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\menu system\protype (groupwork)\obj\x86\Debug\protype__groupwork_.frmMenus.resources
+C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\menu system\protype (groupwork)\obj\x86\Debug\protype__groupwork_.FrmPayment.resources

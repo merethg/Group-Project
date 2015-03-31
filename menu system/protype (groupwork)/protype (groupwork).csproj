@@ -55,6 +55,12 @@
     <Compile Include="frmMenus.Designer.cs">
       <DependentUpon>frmMenus.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPayment.Designer.cs">
+      <DependentUpon>FrmPayment.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTableIdentification.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmMenus.resx">
       <DependentUpon>frmMenus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPayment.resx">
+      <DependentUpon>FrmPayment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTableIdentification.resx">
       <DependentUpon>FrmTableIdentification.cs</DependentUpon>

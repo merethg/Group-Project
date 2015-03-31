@@ -69,13 +69,24 @@ namespace protype__groupwork_
            
         }
 
+        //order button 
         private void button3_Click(object sender, EventArgs e)
         {
-            MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
-            //order button 
-            foreach (string s in listBox2.Items)
+            //MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
+            
+            if (listBox2.Items.Count > 0)
             {
-                sqlClient.Insert("order_item", "Order_ID, Item_Name", "'1', '" + s + "'");
+                foreach (string s in listBox2.Items)
+                {
+                    //sqlClient.Insert("order_item", "Order_ID, Item_Name", "'1', '" + s + "'");
+                    FrmPayment pay = new FrmPayment(strTotal);
+                    pay.Show();
+                    this.Hide();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No items");
             }
         }
 
