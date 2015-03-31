@@ -18,7 +18,8 @@ namespace protype__groupwork_
             //Application.Run(new frmMenus());
             //Application.Run(new FrmTableIdentification());
 
-            Application.Run(new FrmPayment());
+            //Application.Run(new FrmPayment());
+            Application.Run(new frmMenus());
         }
     }
 }

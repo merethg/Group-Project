@@ -95,6 +95,10 @@ namespace protype__groupwork_
         {
             //ignore
             label1.Text = "Total = £0.00";
+
+            listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            listBox1.MeasureItem += lst_MeasureItem;
+            //listBox1.DrawItem += lst_DrawItem;
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -207,12 +211,15 @@ namespace protype__groupwork_
                     while (reader.Read())
                     {
                         listBox1.Items.Add(reader.GetString(1));
+
                         listBox1.Items.Add(reader.GetString(2));
+
+
                         double price = Convert.ToDouble(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
 
-                        listBox1.Items.Add("");                        
+                        listBox1.Items.Add(" ");
                     }
                     myConn.Close();
                 }
@@ -220,6 +227,9 @@ namespace protype__groupwork_
                 {
                     MessageBox.Show(ex.Message);
                 }
+
+                listBox1.DrawItem += lst_DrawItem;
+                listBox1.Refresh();
 
                 lblFoodGroup.Text = "Mains: Pizza";
             }
@@ -246,7 +256,7 @@ namespace protype__groupwork_
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
-                        listBox1.Items.Add("");       
+                        listBox1.Items.Add(" ");       
                     }
                     myConn.Close();
                 }
@@ -255,6 +265,8 @@ namespace protype__groupwork_
                     MessageBox.Show(ex.Message);
                 }
 
+                listBox1.DrawItem += lst_DrawItem;
+                listBox1.Refresh();
                 lblFoodGroup.Text = "Drinks: Hot Drinks";
             }
         }
@@ -285,7 +297,7 @@ namespace protype__groupwork_
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
-                        listBox1.Items.Add("");        
+                        listBox1.Items.Add(" ");        
                     }
                     myConn.Close();
                 }
@@ -294,6 +306,8 @@ namespace protype__groupwork_
                     MessageBox.Show(ex.Message);
                 }
 
+                listBox1.DrawItem += lst_DrawItem;
+                listBox1.Refresh();
                 lblFoodGroup.Text = "Starters: Bread + Nibbles";
             }
             else if (tablecheck == 2)
@@ -318,7 +332,7 @@ namespace protype__groupwork_
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
-                        listBox1.Items.Add("");   
+                        listBox1.Items.Add(" ");   
                     }
                     myConn.Close();
                 }
@@ -327,6 +341,8 @@ namespace protype__groupwork_
                     MessageBox.Show(ex.Message);
                 }
 
+                listBox1.DrawItem += lst_DrawItem;
+                listBox1.Refresh();
                 lblFoodGroup.Text = "Mains: Pasta";
             }
             else if (tablecheck == 3)
@@ -351,7 +367,7 @@ namespace protype__groupwork_
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
-                        listBox1.Items.Add("");    
+                        listBox1.Items.Add(" ");    
                     }
                     myConn.Close();
                 }
@@ -360,6 +376,8 @@ namespace protype__groupwork_
                     MessageBox.Show(ex.Message);
                 }
 
+                listBox1.DrawItem += lst_DrawItem;
+                listBox1.Refresh();
                 lblFoodGroup.Text = "Desserts";
             }
         }
@@ -390,7 +408,7 @@ namespace protype__groupwork_
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
-                        listBox1.Items.Add("");     
+                        listBox1.Items.Add(" ");     
                     }
                     myConn.Close();
                 }
@@ -399,6 +417,8 @@ namespace protype__groupwork_
                     MessageBox.Show(ex.Message);
                 }
 
+                listBox1.DrawItem += lst_DrawItem;
+                listBox1.Refresh();
                 lblFoodGroup.Text = "Mains: Meat + Fish";
             }
             else if (tablecheck == 4)
@@ -423,7 +443,7 @@ namespace protype__groupwork_
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
-                        listBox1.Items.Add("");    
+                        listBox1.Items.Add(" ");    
                     }
                     myConn.Close();
                 }
@@ -432,6 +452,8 @@ namespace protype__groupwork_
                     MessageBox.Show(ex.Message);
                 }
 
+                listBox1.DrawItem += lst_DrawItem;
+                listBox1.Refresh();
                 lblFoodGroup.Text = "Drinks: Soft Drinks";
             }
         }
@@ -462,7 +484,7 @@ namespace protype__groupwork_
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
-                        listBox1.Items.Add("");     
+                        listBox1.Items.Add(" ");     
                     }
                     myConn.Close();
                 }
@@ -470,8 +492,9 @@ namespace protype__groupwork_
                 {
                     MessageBox.Show(ex.Message);
                 }
-
-
+                
+                listBox1.DrawItem += lst_DrawItem;
+                listBox1.Refresh();
                 lblFoodGroup.Text = "Starters";
             }
             else if (tablecheck == 2)
@@ -496,7 +519,7 @@ namespace protype__groupwork_
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
-                        listBox1.Items.Add("");     
+                        listBox1.Items.Add(" ");     
                     }
                     myConn.Close();
                 }
@@ -505,6 +528,8 @@ namespace protype__groupwork_
                     MessageBox.Show(ex.Message);
                 }
 
+                listBox1.DrawItem += lst_DrawItem;
+                listBox1.Refresh();
                 lblFoodGroup.Text = "Mains: Sides";
             }
             else if (tablecheck == 3)
@@ -529,7 +554,7 @@ namespace protype__groupwork_
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
-                        listBox1.Items.Add("");   
+                        listBox1.Items.Add(" ");   
                     }
                     myConn.Close();
                 }
@@ -538,6 +563,8 @@ namespace protype__groupwork_
                     MessageBox.Show(ex.Message);
                 }
 
+                listBox1.DrawItem += lst_DrawItem;
+                listBox1.Refresh();
                 lblFoodGroup.Text = "Dessrts: Gelato Sundaes";
             }
         }
@@ -568,7 +595,7 @@ namespace protype__groupwork_
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
-                        listBox1.Items.Add("");   
+                        listBox1.Items.Add(" ");   
                     }
                     myConn.Close();
                 }
@@ -577,6 +604,8 @@ namespace protype__groupwork_
                     MessageBox.Show(ex.Message);
                 }
 
+                listBox1.DrawItem += lst_DrawItem;
+                listBox1.Refresh();
                 lblFoodGroup.Text = "Mains: Salad";
             }
             else if (tablecheck == 4)
@@ -601,7 +630,7 @@ namespace protype__groupwork_
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
-                        listBox1.Items.Add("");   
+                        listBox1.Items.Add(" ");   
                     }
                     myConn.Close();
                 }
@@ -610,6 +639,8 @@ namespace protype__groupwork_
                     MessageBox.Show(ex.Message);
                 }
 
+                listBox1.DrawItem += lst_DrawItem;
+                listBox1.Refresh();
                 lblFoodGroup.Text = "Drinks: Beer + Cider";
             }
         }
@@ -639,7 +670,7 @@ namespace protype__groupwork_
             }
             else
 
-            if (listBox1.SelectedItem == "")
+            if (listBox1.SelectedItem == " ")
             {
                 listBox1.SetSelected(Convert.ToInt32(listBox1.SelectedIndex) - 3, true);
             }
@@ -650,6 +681,19 @@ namespace protype__groupwork_
             listBox2.Items.Clear();
             label1.Text = "Total = £0.00";
             total = 0.00;
+        }
+
+
+        private void lst_MeasureItem(object sender, MeasureItemEventArgs e)
+        {
+            e.ItemHeight = (int)e.Graphics.MeasureString(listBox1.Items[e.Index].ToString(), listBox1.Font, listBox1.Width).Height;
+        }
+
+        private void lst_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawFocusRectangle();
+            e.Graphics.DrawString(listBox1.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
         }
     }
 }
