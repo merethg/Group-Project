@@ -28,49 +28,62 @@ namespace protype__groupwork_
 
         #region customer list
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            //add button
-            //listBox2.Items.Add(listBox1.SelectedValue);
-            listBox2.Items.Add(listBox1.SelectedItem);
-            //total = total + Convert.ToDouble(listBox1.Items[listBox1.SelectedIndex+2].ToString());
-            string cost = listBox1.Items[listBox1.SelectedIndex + 2].ToString();
-            cost = cost.Remove(0, 1);
-            double dblCost = Convert.ToDouble(cost);
-            
-            total = total + dblCost;
+            if (listBox1.Items.Count >= 1)
+            {
+                if (listBox1.SelectedIndex != -1)
+                {
+                    //listBox2.Items.Add(listBox1.SelectedValue);
+                    listBox2.Items.Add(listBox1.SelectedItem);
+                    //total = total + Convert.ToDouble(listBox1.Items[listBox1.SelectedIndex+2].ToString());
+                    string cost = listBox1.Items[listBox1.SelectedIndex + 2].ToString();
+                    cost = cost.Remove(0, 1);
+                    double dblCost = Convert.ToDouble(cost);
 
-            strTotal = String.Format("{0:C}", total);
+                    total = total + dblCost;
 
-            label1.Text = "Total = " + strTotal;
-            //label1.Text = "Total = £ " + total.ToString("#.##");
+                    strTotal = String.Format("{0:C}", total);
+
+                    label1.Text = "Total = " + strTotal;
+                    //label1.Text = "Total = £ " + total.ToString("#.##");
+                }
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnRemove_Click(object sender, EventArgs e)
         {
             double holder = 0.00;
+            string value;//
+
             foreach (string item in listBox1.Items)
             {
                 if (item == listBox2.SelectedItem)
                 {
                     //select this item in the ListBox.
-                    holder = Convert.ToDouble(listBox1.Items[listBox1.FindString(item) + 2]);
+                    value = listBox1.Items[listBox1.FindString(item) + 2].ToString();//
+                    value = value.Remove(0, 1);//
+                    holder = Convert.ToDouble(value);//
+                    //holder = Convert.ToDouble(listBox1.Items[listBox1.FindString(item) + 2]);
                     break;
                 }
-            } 
+            }
+
             //remove button
             listBox2.Items.Remove(listBox2.SelectedItem);
             total = total - holder;
-            if (Convert.ToInt16(listBox2.Items.Count) == 0)
+
+            if (Convert.ToInt16(listBox2.Items.Count) <= 0)
             {
                 total = 0.00;
             }
-            label1.Text = "Total = £ " + total.ToString("#.##");
-           
+            
+            label1.Text = String.Format("Total = {0:C}", total);
+
         }
 
         //order button 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnOrder_Click(object sender, EventArgs e)
         {
             //MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
             
@@ -101,10 +114,6 @@ namespace protype__groupwork_
             //listBox1.DrawItem += lst_DrawItem;
         }
 
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //ignore 
-        }
 
         #region food catagories
 
