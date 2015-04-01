@@ -6,14 +6,97 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace protype__groupwork_
 {
     public partial class FrmTrackOrder : Form
     {
+        int intRefreshTime = 2;
+        int intRelapsTime = 5;
+
         public FrmTrackOrder()
         {
             InitializeComponent();
+        }
+
+        private void FrmTrackOrder_Load(object sender, EventArgs e)
+        {
+            trackTimer.Enabled = true;
+            lblOrderMessage.Text = "Thank you your order has been placed";
+            picOrderActive.BackColor = Color.Red;
+            picOrderCooking.BackColor = Color.Red;
+            picOrderComplete.BackColor = Color.Red;
+        }
+
+        private void trackTimer_Tick(object sender, EventArgs e)
+        {
+            intRefreshTime -= 1;
+
+            if (intRefreshTime == 0)
+            {
+                intRefreshTime = 30;
+
+                try
+                {
+                    string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
+                    MySqlConnection myConn = new MySqlConnection(myConnection);
+                    MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                    MySqlCommand comand = new MySqlCommand("select Status from demo.order where Table_ID = '2' ;", myConn);
+                    MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
+                    myConn.Open();
+
+                    MySqlDataReader reader = comand.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        if (reader.GetString(0) == "Recieved")
+                        {
+                            picOrderActive.BackColor = Color.Green;
+                            picOrderCooking.BackColor = Color.Red;
+                            picOrderComplete.BackColor = Color.Red;
+                            lblOrderMessage.Text = "Your order has now been recieved";
+                        }
+
+                        if (reader.GetString(0) == "Processing")
+                        {
+                            picOrderActive.BackColor = Color.Green;
+                            picOrderCooking.BackColor = Color.Green;
+                            picOrderComplete.BackColor = Color.Red;
+                            lblOrderMessage.Text = "Your order is now being proesses";
+                        }
+
+                        if (reader.GetString(0) == "Complete")
+                        {
+                            picOrderActive.BackColor = Color.Green;
+                            picOrderCooking.BackColor = Color.Green;
+                            picOrderComplete.BackColor = Color.Green;
+                            lblOrderMessage.Text = "Your order is now complete";
+
+                            trackTimer.Enabled = false;
+                            tmrRelapseTimer.Enabled = true;
+
+                        }
+                    }
+                    myConn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void tmrRelapseTimer_Tick(object sender, EventArgs e)
+        {
+            intRelapsTime -= 1;
+
+            if (intRelapsTime == 0)
+            {
+                tmrRelapseTimer.Enabled = false;
+                FrmTableIdentification table = new FrmTableIdentification();
+                table.Show();
+            }
         }
     }
 }

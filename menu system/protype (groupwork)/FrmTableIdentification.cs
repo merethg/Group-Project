@@ -11,6 +11,8 @@ namespace protype__groupwork_
 {
     public partial class FrmTableIdentification : Form
     {
+        int tableNumber = 1;
+
         public FrmTableIdentification()
         {
             InitializeComponent();
@@ -18,7 +20,7 @@ namespace protype__groupwork_
 
         private void btnMenus_Click(object sender, EventArgs e)
         {
-            frmMenus menu = new frmMenus();
+            frmMenus menu = new frmMenus(tableNumber);
             menu.Show();
             this.Hide();
         }

@@ -17,13 +17,18 @@ namespace protype__groupwork_
         double total = 0.00;
         string strTotal;
         DataSet ds = new DataSet();
-        
-
         int tablecheck = 0;
-        
+        int intTableNumber = 0;
+
         public frmMenus()
         {            
             InitializeComponent();
+        }
+        
+        public frmMenus(int tableNumber)
+        {
+            InitializeComponent();
+            intTableNumber = tableNumber;
         }
 
         #region customer list
@@ -106,12 +111,11 @@ namespace protype__groupwork_
 #endregion
         private void Form1_Load(object sender, EventArgs e)
         {
-            //ignore
             label1.Text = "Total = £0.00";
+            lblTableNumber.Text = "Table: " + intTableNumber.ToString();
 
             listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             listBox1.MeasureItem += lst_MeasureItem;
-            //listBox1.DrawItem += lst_DrawItem;
         }
 
 
