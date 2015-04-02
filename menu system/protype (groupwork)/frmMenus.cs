@@ -14,34 +14,56 @@ namespace protype__groupwork_
 
     public partial class frmMenus : Form
     {
-        double total = 0.00;
+        #region (Variables)
+
         string strTotal;
-        DataSet ds = new DataSet();
+        double total = 0.00;
         int tablecheck = 0;
         int intTableNumber = 0;
+        DataSet ds = new DataSet();
+        Random rnd = new Random();
 
+        #endregion
+
+        #region (Initialisers)
+        
         public frmMenus()
         {            
             InitializeComponent();
         }
         
+        //Initialises form taking tableNumber brom parent form
         public frmMenus(int tableNumber)
         {
             InitializeComponent();
             intTableNumber = tableNumber;
         }
+        
+        #endregion
 
-        #region customer list
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            label1.Text = "Total = £0.00";
+            lblTableNumber.Text = "Table: " + intTableNumber.ToString();
+
+            //Calls text rap methods and enitialises custom draw methods
+            listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            listBox1.MeasureItem += lst_MeasureItem;
+        }
+
+        #region (Buttons)
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            //exected if listbox contains items
             if (listBox1.Items.Count >= 1)
             {
+                //executed if an item is selected
                 if (listBox1.SelectedIndex != -1)
                 {
-                    //listBox2.Items.Add(listBox1.SelectedValue);
                     listBox2.Items.Add(listBox1.SelectedItem);
-                    //total = total + Convert.ToDouble(listBox1.Items[listBox1.SelectedIndex+2].ToString());
+                    
+                    //calculates price to add to total
                     string cost = listBox1.Items[listBox1.SelectedIndex + 2].ToString();
                     cost = cost.Remove(0, 1);
                     double dblCost = Convert.ToDouble(cost);
@@ -51,7 +73,6 @@ namespace protype__groupwork_
                     strTotal = String.Format("{0:C}", total);
 
                     label1.Text = "Total = " + strTotal;
-                    //label1.Text = "Total = £ " + total.ToString("#.##");
                 }
             }
         }
@@ -59,26 +80,25 @@ namespace protype__groupwork_
         private void btnRemove_Click(object sender, EventArgs e)
         {
             double holder = 0.00;
-            string value;//
+            string value;
 
             foreach (string item in listBox1.Items)
             {
                 if (item == listBox2.SelectedItem)
                 {
-                    //select this item in the ListBox.
-                    value = listBox1.Items[listBox1.FindString(item) + 2].ToString();//
-                    value = value.Remove(0, 1);//
-                    holder = Convert.ToDouble(value);//
-                    //holder = Convert.ToDouble(listBox1.Items[listBox1.FindString(item) + 2]);
+                    //calcuates value to take away from total
+                    value = listBox1.Items[listBox1.FindString(item) + 2].ToString();
+                    value = value.Remove(0, 1);
+                    holder = Convert.ToDouble(value);
                     break;
                 }
             }
 
-            //remove button
             listBox2.Items.Remove(listBox2.SelectedItem);
             total = total - holder;
 
-            if (Convert.ToInt16(listBox2.Items.Count) <= 0)
+            //Sets total if no items are in listbox
+            if ((listBox2.Items.Count) <= 0)
             {
                 total = 0.00;
             }
@@ -87,19 +107,20 @@ namespace protype__groupwork_
 
         }
 
-        //order button 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            //MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
+            int randomNumber = rnd.Next(0, 100);
+            MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
+
+            sqlClient.Insert("order", "Order_ID, Table_ID, Status", "'" + randomNumber + "','" + intTableNumber.ToString() + "', 'Recieved'");
             
             if (listBox2.Items.Count > 0)
             {
                 foreach (string s in listBox2.Items)
                 {
-                    //sqlClient.Insert("order_item", "Order_ID, Item_Name", "'1', '" + s + "'");
-                    FrmPayment pay = new FrmPayment(strTotal);
+                    sqlClient.Insert("order_item", "Order_ID, Item_Name", "'" + randomNumber + "', '" + s + "'");
+                    FrmPayment pay = new FrmPayment(strTotal, this);
                     pay.Show();
-                    this.Hide();
                 }
             }
             else
@@ -107,104 +128,122 @@ namespace protype__groupwork_
                 MessageBox.Show("No items");
             }
         }
-
-#endregion
-        private void Form1_Load(object sender, EventArgs e)
+        
+        private void btnClear_Click(object sender, EventArgs e)
         {
+            listBox2.Items.Clear();
             label1.Text = "Total = £0.00";
-            lblTableNumber.Text = "Table: " + intTableNumber.ToString();
-
-            listBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            listBox1.MeasureItem += lst_MeasureItem;
+            total = 0.00;
         }
 
-
-        #region food catagories
-
-        //starter button 
-        private void button4_Click(object sender, EventArgs e)
+        private void listBox1_Click(object sender, EventArgs e)
         {
-            //sets buttons to equal all available starter types
+            //if the user clicks on the description or price of an order it will 
+            //select the order title instead.
+            if (Convert.ToInt32(listBox1.SelectedIndex) % 4 == 0)
+            {
+
+            }
+            else if (Convert.ToInt32(listBox1.SelectedIndex) % 4 == 1)
+            {
+                listBox1.SetSelected(Convert.ToInt32(listBox1.SelectedIndex) - 1, true);
+            }
+            else if (Convert.ToInt32(listBox1.SelectedIndex) % 4 == 2)
+            {
+                listBox1.SetSelected(Convert.ToInt32(listBox1.SelectedIndex) - 2, true);
+            }
+            else
+
+                if (listBox1.SelectedItem == " ")
+                {
+                    listBox1.SetSelected(Convert.ToInt32(listBox1.SelectedIndex) - 3, true);
+                }
+        }
+
+        #endregion
+
+        #region (food Menu catagories)
+        
+        //sets buttons to equal all available starter types
+        private void btnStarter_Click(object sender, EventArgs e)
+        {
             tablecheck = 1;
             button8.Visible = false;
             button10.Visible = false;
             button12.Visible = false;
             button9.Visible = true;
-            button9.Text = "bread/ nibbles";
+            button9.Text = "Bread / Nibbles";
             button11.Visible = true;
-            button11.Text = "starters";
+            button11.Text = "Starters";
             lblFoodGroup.Visible = true;
             lblFoodGroup.Text = "Starters";
         }
-
-        //main button
-        private void button5_Click(object sender, EventArgs e)
+        
+        //sets buttons to equal all available mains types
+        private void btnMain_Click(object sender, EventArgs e)
         {
-            //sets buttons to equal all available mains types
             tablecheck = 2;
             button8.Visible = true;
-            button8.Text = "pizza";
+            button8.Text = "Pizza";
             button9.Visible = true;
-            button9.Text = "pasta";
+            button9.Text = "Pasta";
             button10.Visible = true;
-            button10.Text = "meat";
+            button10.Text = "Meat";
             button11.Visible = true;
-            button11.Text = "sides";
+            button11.Text = "Sides";
             button12.Visible = true;
-            button12.Text = "salads";
+            button12.Text = "Salads";
             lblFoodGroup.Visible = true;
             lblFoodGroup.Text = "Mains";
         }
-
-        //dessert button
-        private void button6_Click(object sender, EventArgs e)
+        
+        //sets buttons to equal all available desserts types
+        private void btnDessert_Click(object sender, EventArgs e)
         {
-            //sets buttons to equal all available desserts types
-
             tablecheck = 3;
             button8.Visible = false;
             button10.Visible = false;
             button12.Visible = false;
             button9.Visible = true;
-            button9.Text = "desserts";
+            button9.Text = "Desserts";
             button11.Visible = true;
-            button11.Text = "sundaes";
+            button11.Text = "Sundaes";
             lblFoodGroup.Visible = true;
             lblFoodGroup.Text = "Desserts";
         }
 
-        //drinks button 
-        private void button7_Click(object sender, EventArgs e)
+        //sets buttons to equal all available starter types
+        private void btnDrinks_Click(object sender, EventArgs e)
         {
-            //sets buttons to equal all available starter types
             tablecheck = 4;
             button9.Visible = false;
             button11.Visible = false;
             button8.Visible = true;
-            button8.Text = "hot drinks";
+            button8.Text = "Hot Drinks";
             button10.Visible = true;
-            button10.Text = "soft drinks";
+            button10.Text = "Soft Drinks";
             button12.Visible = true;
-            button12.Text = "alcohol";
+            button12.Text = "Alcohol";
             lblFoodGroup.Visible = true;
             lblFoodGroup.Text = "Drinks";
         }
+
         #endregion
 
-        #region food sub_catagories
+        #region (food sub catagories)
 
         //to change server info such as ip or port change the string below.
         //put the ip after datasorce and the port after port.
         //change the username after username and the password to the server password.
         string conection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
 
-        //pizza and hot drinks
+        //Pizza and Hot Drinks
         private void button8_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            if (tablecheck == 2)
-            {
-                //pizza
+
+            if (tablecheck == 2) //Pizza
+            {                
                 try
                 {
                     //this code recieves a list of items, descriptions and prices from the server.
@@ -224,10 +263,9 @@ namespace protype__groupwork_
                     while (reader.Read())
                     {
                         listBox1.Items.Add(reader.GetString(1));
-
                         listBox1.Items.Add(reader.GetString(2));
-
-
+                        
+                        //Sets price to curency 
                         double price = Convert.ToDouble(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
@@ -241,21 +279,20 @@ namespace protype__groupwork_
                     MessageBox.Show(ex.Message);
                 }
 
+                //calls text wrap methods refreshing listbox once complete
                 listBox1.DrawItem += lst_DrawItem;
                 listBox1.Refresh();
 
                 lblFoodGroup.Text = "Mains: Pizza";
             }
-            
-            else if (tablecheck == 4)
+
+            else if (tablecheck == 4) //Hot Drinks 
             {
-                //hot drinks 
                 try
                 {
                     string myConnection = conection;
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                    //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
                     MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Hot Drinks' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
@@ -266,9 +303,11 @@ namespace protype__groupwork_
                     {
                         listBox1.Items.Add(reader.GetString(1));
                         listBox1.Items.Add(reader.GetString(2));
+
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
+
                         listBox1.Items.Add(" ");       
                     }
                     myConn.Close();
@@ -280,23 +319,23 @@ namespace protype__groupwork_
 
                 listBox1.DrawItem += lst_DrawItem;
                 listBox1.Refresh();
+
                 lblFoodGroup.Text = "Drinks: Hot Drinks";
             }
         }
 
-        //nibbles, pasta and desserts
+        //Nibbles, Pasta and Desserts
         private void button9_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            if (tablecheck == 1)
+
+            if (tablecheck == 1)    //Bread / Nibbles
             {
-                //bread/ nibbles
                 try
                 {
                     string myConnection = conection;
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                    //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
                     MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Bread + Nibbles' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
@@ -307,9 +346,11 @@ namespace protype__groupwork_
                     {
                         listBox1.Items.Add(reader.GetString(1));
                         listBox1.Items.Add(reader.GetString(2));
+
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
+                        
                         listBox1.Items.Add(" ");        
                     }
                     myConn.Close();
@@ -321,17 +362,16 @@ namespace protype__groupwork_
 
                 listBox1.DrawItem += lst_DrawItem;
                 listBox1.Refresh();
+                
                 lblFoodGroup.Text = "Starters: Bread + Nibbles";
             }
-            else if (tablecheck == 2)
+            else if (tablecheck == 2)   //Pasta
             {
-                //pasta
                 try
                 {
                     string myConnection = conection;
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                    //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
                     MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Pasta' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
@@ -342,9 +382,11 @@ namespace protype__groupwork_
                     {
                         listBox1.Items.Add(reader.GetString(1));
                         listBox1.Items.Add(reader.GetString(2));
+
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
+
                         listBox1.Items.Add(" ");   
                     }
                     myConn.Close();
@@ -356,17 +398,16 @@ namespace protype__groupwork_
 
                 listBox1.DrawItem += lst_DrawItem;
                 listBox1.Refresh();
+
                 lblFoodGroup.Text = "Mains: Pasta";
             }
-            else if (tablecheck == 3)
+            else if (tablecheck == 3)   //Desserts
             {
-                //desserts
                 try
                 {
                     string myConnection = conection;
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                    //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
                     MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Dessert' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
@@ -377,9 +418,11 @@ namespace protype__groupwork_
                     {
                         listBox1.Items.Add(reader.GetString(1));
                         listBox1.Items.Add(reader.GetString(2));
+
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
+                        
                         listBox1.Items.Add(" ");    
                     }
                     myConn.Close();
@@ -391,23 +434,23 @@ namespace protype__groupwork_
 
                 listBox1.DrawItem += lst_DrawItem;
                 listBox1.Refresh();
+
                 lblFoodGroup.Text = "Desserts";
             }
         }
 
-        //meat and soft drinks
+        //Meat and Soft Drinks
         private void button10_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            if (tablecheck == 2)
+
+            if (tablecheck == 2)    //Meat
             {
-                //meat
                 try
                 {
                     string myConnection = conection;
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                    //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
                     MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Meat + Fish' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
@@ -418,9 +461,11 @@ namespace protype__groupwork_
                     {
                         listBox1.Items.Add(reader.GetString(1));
                         listBox1.Items.Add(reader.GetString(2));
+
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
+
                         listBox1.Items.Add(" ");     
                     }
                     myConn.Close();
@@ -432,17 +477,16 @@ namespace protype__groupwork_
 
                 listBox1.DrawItem += lst_DrawItem;
                 listBox1.Refresh();
+
                 lblFoodGroup.Text = "Mains: Meat + Fish";
             }
-            else if (tablecheck == 4)
+            else if (tablecheck == 4)   //Soft Drinks
             {
-                //soft drinks
                 try
                 {
                     string myConnection = conection;
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                    //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
                     MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Soft Drinks' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
@@ -453,9 +497,11 @@ namespace protype__groupwork_
                     {
                         listBox1.Items.Add(reader.GetString(1));
                         listBox1.Items.Add(reader.GetString(2));
+
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
+                        
                         listBox1.Items.Add(" ");    
                     }
                     myConn.Close();
@@ -467,23 +513,23 @@ namespace protype__groupwork_
 
                 listBox1.DrawItem += lst_DrawItem;
                 listBox1.Refresh();
+
                 lblFoodGroup.Text = "Drinks: Soft Drinks";
             }
         }
 
-        //starters, sides nad sundaes
+        //Starters, Sides and Sundaes
         private void button11_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            if (tablecheck == 1)
+
+            if (tablecheck == 1)    //Starters
             {
-                //starters
                 try
                 {
                     string myConnection = conection;
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                    //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
                     MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Starters' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
@@ -494,9 +540,11 @@ namespace protype__groupwork_
                     {
                         listBox1.Items.Add(reader.GetString(1));
                         listBox1.Items.Add(reader.GetString(2));
+
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
+                        
                         listBox1.Items.Add(" ");     
                     }
                     myConn.Close();
@@ -508,17 +556,16 @@ namespace protype__groupwork_
                 
                 listBox1.DrawItem += lst_DrawItem;
                 listBox1.Refresh();
+
                 lblFoodGroup.Text = "Starters";
             }
-            else if (tablecheck == 2)
+            else if (tablecheck == 2) //Sides
             {
-                //sides
                 try
                 {
                     string myConnection = conection;
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                    //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
                     MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Sides' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
@@ -529,9 +576,11 @@ namespace protype__groupwork_
                     {
                         listBox1.Items.Add(reader.GetString(1));
                         listBox1.Items.Add(reader.GetString(2));
+
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
+                        
                         listBox1.Items.Add(" ");     
                     }
                     myConn.Close();
@@ -543,17 +592,16 @@ namespace protype__groupwork_
 
                 listBox1.DrawItem += lst_DrawItem;
                 listBox1.Refresh();
+                
                 lblFoodGroup.Text = "Mains: Sides";
             }
-            else if (tablecheck == 3)
+            else if (tablecheck == 3) //Sundaes
             {
-                //sundaes
                 try
                 {
                     string myConnection = conection;
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                    //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
                     MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Gelato Sundaes' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
@@ -564,9 +612,11 @@ namespace protype__groupwork_
                     {
                         listBox1.Items.Add(reader.GetString(1));
                         listBox1.Items.Add(reader.GetString(2));
+
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
+                        
                         listBox1.Items.Add(" ");   
                     }
                     myConn.Close();
@@ -578,23 +628,23 @@ namespace protype__groupwork_
 
                 listBox1.DrawItem += lst_DrawItem;
                 listBox1.Refresh();
+                
                 lblFoodGroup.Text = "Dessrts: Gelato Sundaes";
             }
         }
 
-        //salads and alcohol
+        //Salads and Alcohol
         private void button12_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            if (tablecheck == 2)
+
+            if (tablecheck == 2)    //Salads
             {
-                //salads
                 try
                 {
                     string myConnection = conection;
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                    //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
                     MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Salad' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
@@ -605,9 +655,11 @@ namespace protype__groupwork_
                     {
                         listBox1.Items.Add(reader.GetString(1));
                         listBox1.Items.Add(reader.GetString(2));
+
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
+
                         listBox1.Items.Add(" ");   
                     }
                     myConn.Close();
@@ -619,17 +671,16 @@ namespace protype__groupwork_
 
                 listBox1.DrawItem += lst_DrawItem;
                 listBox1.Refresh();
+
                 lblFoodGroup.Text = "Mains: Salad";
             }
-            else if (tablecheck == 4)
+            else if (tablecheck == 4)   //Alcohol
             {
-                //alcohol
                 try
                 {
                     string myConnection = conection;
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                    //myDataAdapter.SelectCommand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);
                     MySqlCommand comand = new MySqlCommand("select * from demo.menu_item where Item_Type = 'Beer + Cider' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
@@ -640,9 +691,11 @@ namespace protype__groupwork_
                     {
                         listBox1.Items.Add(reader.GetString(1));
                         listBox1.Items.Add(reader.GetString(2));
+
                         decimal price = Convert.ToDecimal(reader.GetString(6));
                         string dprice = String.Format("{0:C}", price);
                         listBox1.Items.Add(dprice);
+                        
                         listBox1.Items.Add(" ");   
                     }
                     myConn.Close();
@@ -654,49 +707,16 @@ namespace protype__groupwork_
 
                 listBox1.DrawItem += lst_DrawItem;
                 listBox1.Refresh();
+
                 lblFoodGroup.Text = "Drinks: Beer + Cider";
             }
         }
+
         #endregion
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-          
-
-        }
-
-        private void listBox1_Click(object sender, EventArgs e)
-        {
-            //if the user clicks on the description or price of an order it will 
-            //select the order title instead.
-            if (Convert.ToInt32(listBox1.SelectedIndex) % 4 == 0)
-            {
-                
-            }
-            else if (Convert.ToInt32(listBox1.SelectedIndex) % 4 == 1)
-            {
-                listBox1.SetSelected(Convert.ToInt32(listBox1.SelectedIndex) -1,true);
-            }
-            else if (Convert.ToInt32(listBox1.SelectedIndex) % 4 == 2)
-            {
-                listBox1.SetSelected(Convert.ToInt32(listBox1.SelectedIndex) - 2, true);
-            }
-            else
-
-            if (listBox1.SelectedItem == " ")
-            {
-                listBox1.SetSelected(Convert.ToInt32(listBox1.SelectedIndex) - 3, true);
-            }
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            listBox2.Items.Clear();
-            label1.Text = "Total = £0.00";
-            total = 0.00;
-        }
-
-
+       
+        #region (Text Wrap Methods)
+        
+        //Calculates height of listbox item
         private void lst_MeasureItem(object sender, MeasureItemEventArgs e)
         {
             e.ItemHeight = (int)e.Graphics.MeasureString(listBox1.Items[e.Index].ToString(), listBox1.Font, listBox1.Width).Height;
@@ -707,6 +727,13 @@ namespace protype__groupwork_
             e.DrawBackground();
             e.DrawFocusRectangle();
             e.Graphics.DrawString(listBox1.Items[e.Index].ToString(), e.Font, new SolidBrush(e.ForeColor), e.Bounds);
+        }
+        
+        #endregion
+
+        public void closeForm()
+        {
+            this.Close();
         }
     }
 }

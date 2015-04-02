@@ -12,13 +12,21 @@ namespace protype__groupwork_
 {
     public partial class FrmTrackOrder : Form
     {
+        #region (Variables)
+       
         int intRefreshTime = 2;
         int intRelapsTime = 5;
+        
+        #endregion
 
+        #region (Initialisers)
+        
         public FrmTrackOrder()
         {
             InitializeComponent();
         }
+        
+        #endregion
 
         private void FrmTrackOrder_Load(object sender, EventArgs e)
         {
@@ -29,6 +37,8 @@ namespace protype__groupwork_
             picOrderComplete.BackColor = Color.Red;
         }
 
+        #region (Timers)
+        
         private void trackTimer_Tick(object sender, EventArgs e)
         {
             intRefreshTime -= 1;
@@ -96,7 +106,11 @@ namespace protype__groupwork_
                 tmrRelapseTimer.Enabled = false;
                 FrmTableIdentification table = new FrmTableIdentification();
                 table.Show();
+                this.Close();
             }
         }
+        
+        #endregion
+
     }
 }

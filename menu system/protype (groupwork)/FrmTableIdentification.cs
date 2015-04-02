@@ -11,18 +11,31 @@ namespace protype__groupwork_
 {
     public partial class FrmTableIdentification : Form
     {
+        #region (Variables)
+
         int tableNumber = 1;
+        
+        #endregion
+
+        #region (Initialisers
 
         public FrmTableIdentification()
         {
             InitializeComponent();
         }
+        
+        #endregion
 
+        #region (Buttons)
+        
         private void btnMenus_Click(object sender, EventArgs e)
         {
             frmMenus menu = new frmMenus(tableNumber);
             menu.Show();
             this.Hide();
         }
+        
+        #endregion
+
     }
 }

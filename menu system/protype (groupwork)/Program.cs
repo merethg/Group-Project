@@ -16,11 +16,11 @@ namespace protype__groupwork_
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmMenus());
-            //Application.Run(new FrmTableIdentification());
+            Application.Run(new FrmTableIdentification());
 
             //Application.Run(new FrmPayment());
             //Application.Run(new frmMenus());
-            Application.Run(new FrmTrackOrder());
+            //Application.Run(new FrmTrackOrder());
         }
     }
 }

@@ -12,6 +12,8 @@ namespace protype__groupwork_
 {
     public partial class FrmPayment : Form
     {
+        #region (Variables)
+        
         int startYear = DateTime.Now.Year;
         string strFirstName;
         string strLastName;
@@ -25,7 +27,12 @@ namespace protype__groupwork_
         string strPostCode;
         string strCountry;
         string strEmail;
+        private frmMenus menu;
+        
+        #endregion
 
+        #region (Initialisers)
+        
         public FrmPayment()
         {
             InitializeComponent();
@@ -36,6 +43,15 @@ namespace protype__groupwork_
             InitializeComponent();
             txtInvoiceTotal.Text = total;
         }
+
+        public FrmPayment(string total, frmMenus frmM)
+        {
+            InitializeComponent();
+            txtInvoiceTotal.Text = total;
+            menu = frmM;
+        }
+        
+        #endregion
 
         private void FrmPayment_Load(object sender, EventArgs e)
         {
@@ -49,6 +65,7 @@ namespace protype__groupwork_
             cmbCountry.SelectedItem = "United Kingdom";
         }
 
+        //Creates and fills a list of countries
         public static List<string> GetCountryList()
         {
             List<string> cultureList = new List<string>();
@@ -67,7 +84,9 @@ namespace protype__groupwork_
             return cultureList;
         }
 
-        private void btnOrder_Click(object sender, EventArgs e)
+        #region (Buttons)
+        
+        public void btnOrder_Click(object sender, EventArgs e)
         {
             bool error = false;
             bool valid = false;
@@ -85,26 +104,26 @@ namespace protype__groupwork_
             }
 
             #region(SET VALUES)
+
             strFirstName = txtFirstName.Text;
             strLastName = txtLastName.Text;
             strCardNumber = txtCardNumber.Text;
             strCardSecurity = txtCardSecurity.Text;
-            //strExpirationDate = cmbExpirationMonth.SelectedItem.ToString() + " / " + cmbExpirationYear.SelectedItem.ToString();
             strBillingAddress1 = txtAddress1.Text;
             strBillingAddress2 = txtAddress2.Text;
             strCity = txtCity.Text;
             strPostCode = txtPostalCode.Text;
             strCountry = cmbCountry.SelectedItem.ToString();
             strEmail = txtEmail.Text;
+
             #endregion
 
-            #region(set default colour)
+            #region(Set Default Colour)
             lblFirstName.ForeColor = Color.Black;
             lblLastName.ForeColor = Color.Black;
             lblCardType.ForeColor = Color.Black;
             lblCardNumber.ForeColor = Color.Black;
             lblSecurityNumber.ForeColor = Color.Black;
-            //lblExpirationDate.ForeColor = Color.Black;
             lblBilling1.ForeColor = Color.Black;
             lblCity.ForeColor = Color.Black;
             lblCountry.ForeColor = Color.Black;
@@ -114,6 +133,7 @@ namespace protype__groupwork_
 
             #region(Error Checking)
 
+            //Checks email validity
             foreach (char c in strEmail)
             {
                 if (c == '@')
@@ -122,6 +142,7 @@ namespace protype__groupwork_
                 }
             }
 
+            //Checks to see all needed fields are filled
             if (strFirstName == "" || strLastName == "" || strCardNumber == "" || strCardSecurity == "" || strCardType == "" ||
                 strExpirationDate == "" || strBillingAddress1 == "" || strCity == "" || strPostCode == "" || strCountry == "" ||
                 strEmail == "")
@@ -131,6 +152,7 @@ namespace protype__groupwork_
             }
             else
             {
+                //Checks to see if card length is valid
                 if (strCardNumber.Length != 16)
                 {
                     MessageBox.Show("Card Number Too Long");
@@ -141,6 +163,7 @@ namespace protype__groupwork_
                 }
                 else
                 {
+                    //Checks to see if first name fiels is filled
                     if (strFirstName == "")
                     {
                         MessageBox.Show("Please enter your first name");
@@ -150,6 +173,7 @@ namespace protype__groupwork_
                     }
                     else
                     {
+                        //Checks to see if last name field is filled
                         if (strLastName == "")
                         {
                             MessageBox.Show("Please enter your first name");
@@ -159,6 +183,7 @@ namespace protype__groupwork_
                         }
                         else
                         {
+                            //Checks to see is a card type is selected
                             if (radVisa.Checked == false && radMasterCard.Checked == false &&
                                 radAmericanExpress.Checked == false && radDiscover.Checked == false &&
                                 radDelta.Checked == false)
@@ -169,6 +194,7 @@ namespace protype__groupwork_
                             }
                             else
                             {
+                                //Checks to see if billing address is filled
                                 if (strBillingAddress1 == "")
                                 {
                                     MessageBox.Show("Please enter you address");
@@ -177,6 +203,7 @@ namespace protype__groupwork_
                                 }
                                 else
                                 {
+                                    //Checks to see is city ils is filled
                                     if (strCity == "")
                                     {
                                         MessageBox.Show("Please enter your city");
@@ -185,6 +212,7 @@ namespace protype__groupwork_
                                     }
                                     else
                                     {
+                                        //Checks to see if email fiels is filled
                                         if (strEmail == "")
                                         {
                                             MessageBox.Show("Please enter your email address");
@@ -193,6 +221,7 @@ namespace protype__groupwork_
                                         }
                                         else
                                         {
+                                            //Executed invalid email address is entered
                                             if (!valid)
                                             {
                                                 MessageBox.Show("Please enter a valid email address");
@@ -202,6 +231,7 @@ namespace protype__groupwork_
                                             }
                                             else
                                             {
+                                                //Checks to see if both expiration date fields are filled
                                                 if (cmbExpirationMonth.SelectedIndex == -1 || cmbExpirationYear.SelectedIndex == -1)
                                                 {
                                                     MessageBox.Show("Please enter a valid expiration date");
@@ -235,16 +265,22 @@ namespace protype__groupwork_
             //label13.Text = strEmail;
             #endregion
 
-
+            //Executed if all payment fields are filled correctly
             if (!error)
             {
                 FrmTrackOrder track = new FrmTrackOrder();
                 track.Show();
-                this.Hide();
+                this.Close();
+                //this.Hide();
+                menu.closeForm(); //calls closeForm method from parent form
             }
         }
+        
+        #endregion
 
         #region(SetCardTypes)
+       
+        //Sets card type string
         private void radVisa_CheckedChanged(object sender, EventArgs e)
         {
             strCardType = "Visa";
@@ -273,8 +309,42 @@ namespace protype__groupwork_
 
             strCardType = "Discover";
         }
+
+        private void picVisa_Click(object sender, EventArgs e)
+        {
+            strCardType = "Visa";
+            radVisa.Checked = true;
+        }
+
+        private void picMasterCard_Click(object sender, EventArgs e)
+        {
+            strCardType = "MasterCard";
+            radMasterCard.Checked = true;
+        }
+
+        private void picAmericanExpress_Click(object sender, EventArgs e)
+        {
+            strCardType = "American Express";
+            radAmericanExpress.Checked = true;
+        }
+
+        private void picDelta_Click(object sender, EventArgs e)
+        {
+            strCardType = "Delta";
+            radDelta.Checked = true;
+        }
+
+        private void picDiscover_Click(object sender, EventArgs e)
+        {
+            strCardType = "Discover";
+            radDiscover.Checked = true;
+        }
+        
         #endregion
 
+        #region (Form Limitations)
+        
+        //Limits textbox to Digits
         private void txtCardNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -283,6 +353,7 @@ namespace protype__groupwork_
             }
         }
 
+        //Linits textbox to Letters and hyphens 
         private void txtFirstName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && (e.KeyChar != '-'))
@@ -291,6 +362,7 @@ namespace protype__groupwork_
             }
         }
 
+        //Linits textbox to Letters and hyphens 
         private void txtLastName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && (e.KeyChar != '-'))
@@ -299,6 +371,7 @@ namespace protype__groupwork_
             }
         }
 
+        //Linits textbox to Digits 
         private void txtCardSecurity_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -307,6 +380,7 @@ namespace protype__groupwork_
             }
         }
 
+        //Linits textbox to Letters 
         private void txtCity_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar))
@@ -315,8 +389,8 @@ namespace protype__groupwork_
             }
 
         }
-
-       
+        
+        #endregion
 
         
     }

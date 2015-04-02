@@ -391,6 +391,7 @@
             this.picVisa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picVisa.TabIndex = 46;
             this.picVisa.TabStop = false;
+            this.picVisa.Click += new System.EventHandler(this.picVisa_Click);
             // 
             // picMasterCard
             // 
@@ -401,6 +402,7 @@
             this.picMasterCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picMasterCard.TabIndex = 47;
             this.picMasterCard.TabStop = false;
+            this.picMasterCard.Click += new System.EventHandler(this.picMasterCard_Click);
             // 
             // picDelta
             // 
@@ -411,6 +413,7 @@
             this.picDelta.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picDelta.TabIndex = 49;
             this.picDelta.TabStop = false;
+            this.picDelta.Click += new System.EventHandler(this.picDelta_Click);
             // 
             // radDelta
             // 
@@ -566,6 +569,7 @@
             this.picAmericanExpress.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picAmericanExpress.TabIndex = 67;
             this.picAmericanExpress.TabStop = false;
+            this.picAmericanExpress.Click += new System.EventHandler(this.picAmericanExpress_Click);
             // 
             // picDiscover
             // 
@@ -576,6 +580,7 @@
             this.picDiscover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picDiscover.TabIndex = 68;
             this.picDiscover.TabStop = false;
+            this.picDiscover.Click += new System.EventHandler(this.picDiscover_Click);
             // 
             // label9
             // 
@@ -644,6 +649,7 @@
             this.Controls.Add(this.lblLastName);
             this.Controls.Add(this.lblCountry);
             this.Name = "FrmPayment";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmPayment";
             this.Load += new System.EventHandler(this.FrmPayment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picVisa)).EndInit();
