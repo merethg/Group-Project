@@ -20,6 +20,7 @@ namespace protype__groupwork_
         double total = 0.00;
         int tablecheck = 0;
         int intTableNumber = 0;
+        int orderNumber;
         DataSet ds = new DataSet();
         Random rnd = new Random();
 
@@ -110,6 +111,7 @@ namespace protype__groupwork_
         private void btnOrder_Click(object sender, EventArgs e)
         {
             int randomNumber = rnd.Next(0, 100);
+            orderNumber = randomNumber;
             MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
 
             sqlClient.Insert("order", "Order_ID, Table_ID, Status", "'" + randomNumber + "','" + intTableNumber.ToString() + "', 'Recieved'");
@@ -119,7 +121,7 @@ namespace protype__groupwork_
                 foreach (string s in listBox2.Items)
                 {
                     sqlClient.Insert("order_item", "Order_ID, Item_Name", "'" + randomNumber + "', '" + s + "'");
-                    FrmPayment pay = new FrmPayment(strTotal, this);
+                    FrmPayment pay = new FrmPayment(strTotal, this, orderNumber);
                     pay.Show();
                 }
             }

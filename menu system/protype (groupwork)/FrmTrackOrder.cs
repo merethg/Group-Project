@@ -16,6 +16,7 @@ namespace protype__groupwork_
        
         int intRefreshTime = 2;
         int intRelapsTime = 5;
+        int intOrderNumber;
         
         #endregion
 
@@ -24,6 +25,12 @@ namespace protype__groupwork_
         public FrmTrackOrder()
         {
             InitializeComponent();
+        }
+
+        public FrmTrackOrder(int orderNumber)
+        {
+            InitializeComponent();
+            intOrderNumber = orderNumber;
         }
         
         #endregion
@@ -45,14 +52,15 @@ namespace protype__groupwork_
 
             if (intRefreshTime == 0)
             {
-                intRefreshTime = 30;
+                intRefreshTime = 10;
 
                 try
                 {
                     string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                    MySqlCommand comand = new MySqlCommand("select Status from demo.order where Table_ID = '2' ;", myConn);
+                    //MySqlCommand comand = new MySqlCommand("select Status from demo.order where Table_ID = '2' ;", myConn);
+                    MySqlCommand comand = new MySqlCommand("select Status from demo.order where Order_ID = '" + intOrderNumber.ToString() + "' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
 

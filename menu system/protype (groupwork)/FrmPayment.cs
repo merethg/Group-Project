@@ -15,6 +15,7 @@ namespace protype__groupwork_
         #region (Variables)
         
         int startYear = DateTime.Now.Year;
+        int intOrderNumber;
         string strFirstName;
         string strLastName;
         string strCardType;
@@ -50,12 +51,18 @@ namespace protype__groupwork_
             txtInvoiceTotal.Text = total;
             menu = frmM;
         }
-        
+
+        public FrmPayment(string total, frmMenus frmM, int orderNumber)
+        {
+            InitializeComponent();
+            txtInvoiceTotal.Text = total;
+            menu = frmM;
+            intOrderNumber = orderNumber;
+        }
         #endregion
 
         private void FrmPayment_Load(object sender, EventArgs e)
         {
-
             for (int year = DateTime.Now.Year; year <= startYear + 3; year++)
             {
                 cmbExpirationYear.Items.Add(year.ToString());
@@ -268,7 +275,7 @@ namespace protype__groupwork_
             //Executed if all payment fields are filled correctly
             if (!error)
             {
-                FrmTrackOrder track = new FrmTrackOrder();
+                FrmTrackOrder track = new FrmTrackOrder(intOrderNumber);
                 track.Show();
                 this.Close();
                 //this.Hide();
