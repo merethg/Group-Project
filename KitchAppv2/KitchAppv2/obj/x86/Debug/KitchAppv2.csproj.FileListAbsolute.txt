@@ -7,3 +7,5 @@ c:\users\ryan\documents\visual studio 2010\Projects\KitchAppv2\KitchAppv2\obj\x8
 c:\users\ryan\documents\visual studio 2010\Projects\KitchAppv2\KitchAppv2\obj\x86\Debug\KitchAppv2.pdb
 C:\Users\Ryan\Documents\Visual Studio 2010\Projects\KitchAppv2\KitchAppv2\obj\x86\Debug\KitchAppv2.csprojResolveAssemblyReference.cache
 C:\Users\Ryan\Documents\Visual Studio 2010\Projects\KitchAppv2\KitchAppv2\bin\Debug\MySql.Fabric.Plugin.dll
+C:\Users\Daniel\Documents\GitHub\Group-Project\KitchAppv2\KitchAppv2\obj\x86\Debug\KitchAppv2.exe
+C:\Users\Daniel\Documents\GitHub\Group-Project\KitchAppv2\KitchAppv2\obj\x86\Debug\KitchAppv2.pdb

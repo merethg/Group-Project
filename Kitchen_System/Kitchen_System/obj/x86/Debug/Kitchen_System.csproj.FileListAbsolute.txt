@@ -1,7 +1,0 @@
-C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Programming Files\Kitchen_System\Kitchen_System\bin\Debug\Kitchen_System.exe
-C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Programming Files\Kitchen_System\Kitchen_System\bin\Debug\Kitchen_System.pdb
-C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Programming Files\Kitchen_System\Kitchen_System\obj\x86\Debug\Kitchen_System.FrmKitchen.resources
-C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Programming Files\Kitchen_System\Kitchen_System\obj\x86\Debug\Kitchen_System.Properties.Resources.resources
-C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Programming Files\Kitchen_System\Kitchen_System\obj\x86\Debug\Kitchen_System.csproj.GenerateResource.Cache
-C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Programming Files\Kitchen_System\Kitchen_System\obj\x86\Debug\Kitchen_System.exe
-C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Programming Files\Kitchen_System\Kitchen_System\obj\x86\Debug\Kitchen_System.pdb
