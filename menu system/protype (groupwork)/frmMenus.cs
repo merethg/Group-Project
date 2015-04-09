@@ -120,10 +120,10 @@ namespace protype__groupwork_
             {
                 foreach (string s in listBox2.Items)
                 {
-                    sqlClient.Insert("order_item", "Order_ID, Item_Name", "'" + randomNumber + "', '" + s + "'");
-                    FrmPayment pay = new FrmPayment(strTotal, this, orderNumber);
-                    pay.Show();
+                    sqlClient.Insert("order_item", "Order_ID, Item_Name", "'" + randomNumber + "', '" + s + "'");                    
                 }
+                FrmPayment pay = new FrmPayment(strTotal, this, orderNumber);
+                pay.Show();
             }
             else
             {
