@@ -33,7 +33,7 @@ namespace Restaurant_Application
         public frmTableSelection(string strDiners)
         {
             InitializeComponent();
-            lblDiners.Text = "Diners " + strDiners;
+            lblDiners.Text = "Number of Diners: " + strDiners;
             searchValue = Convert.ToInt32(strDiners);
 
             if (searchValue % 2 == 1)
@@ -41,7 +41,7 @@ namespace Restaurant_Application
                 searchValue += 1;
             }
 
-            lblSearch.Text = "Table for " + searchValue.ToString();
+            lblSearch.Text = "Table For: " + searchValue.ToString();
 
             try
             {
@@ -67,7 +67,7 @@ namespace Restaurant_Application
             }
 
             //set initial table availability
-            #region
+            #region (Checks for table availability)
             string[] tableNumbers = tables.Split(' ');
 
             foreach (string c in tableNumbers)
@@ -268,11 +268,12 @@ namespace Restaurant_Application
         }
 
         //table button press controls
-        #region
+        #region (Table button press methods)
         private void pbTable1_Click(object sender, EventArgs e)
         {
             customerChoice = "1";
-            pbTable1.BackColor = Color.LightGoldenrodYellow;
+            //pbTable1.BackColor = Color.LightGoldenrodYellow;
+            pbTable1.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
 
             if (pbTable2.Enabled == true)
@@ -450,7 +451,7 @@ namespace Restaurant_Application
         private void pbTable2_Click(object sender, EventArgs e)
         {
             customerChoice = "2";
-            pbTable2.BackColor = Color.LightGoldenrodYellow;
+            pbTable2.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -629,7 +630,7 @@ namespace Restaurant_Application
         private void pbTable3_Click(object sender, EventArgs e)
         {
             customerChoice = "3";
-            pbTable3.BackColor = Color.LightGoldenrodYellow;
+            pbTable3.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -810,7 +811,7 @@ namespace Restaurant_Application
         private void pbTable4_Click(object sender, EventArgs e)
         {
             customerChoice = "4";
-            pbTable4.BackColor = Color.LightGoldenrodYellow;
+            pbTable4.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -991,7 +992,7 @@ namespace Restaurant_Application
         private void pbTable5_Click(object sender, EventArgs e)
         {
             customerChoice = "5";
-            pbTable5.BackColor = Color.LightGoldenrodYellow;
+            pbTable5.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -1172,7 +1173,7 @@ namespace Restaurant_Application
         private void pbTable6_Click(object sender, EventArgs e)
         {
             customerChoice = "6";
-            pbTable6.BackColor = Color.LightGoldenrodYellow;
+            pbTable6.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -1351,7 +1352,7 @@ namespace Restaurant_Application
         private void pbTable7_Click(object sender, EventArgs e)
         {
             customerChoice = "7";
-            pbTable7.BackColor = Color.LightGoldenrodYellow;
+            pbTable7.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -1530,7 +1531,7 @@ namespace Restaurant_Application
         private void pbTable8_Click(object sender, EventArgs e)
         {
             customerChoice = "8";
-            pbTable8.BackColor = Color.LightGoldenrodYellow;
+            pbTable8.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -1709,7 +1710,7 @@ namespace Restaurant_Application
         private void pbTable9_Click(object sender, EventArgs e)
         {
             customerChoice = "9";
-            pbTable9.BackColor = Color.LightGoldenrodYellow;
+            pbTable9.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -1888,7 +1889,7 @@ namespace Restaurant_Application
         private void pbTable10_Click(object sender, EventArgs e)
         {
             customerChoice = "10";
-            pbTable10.BackColor = Color.LightGoldenrodYellow;
+            pbTable10.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -2067,7 +2068,7 @@ namespace Restaurant_Application
         private void pbTable11_Click(object sender, EventArgs e)
         {
             customerChoice = "11";
-            pbTable11.BackColor = Color.LightGoldenrodYellow;
+            pbTable11.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -2246,7 +2247,7 @@ namespace Restaurant_Application
         private void pbTable12_Click(object sender, EventArgs e)
         {
             customerChoice = "12";
-            pbTable12.BackColor = Color.LightGoldenrodYellow;
+            pbTable12.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -2425,7 +2426,7 @@ namespace Restaurant_Application
         private void pbTable13_Click(object sender, EventArgs e)
         {
             customerChoice = "13";
-            pbTable13.BackColor = Color.LightGoldenrodYellow;
+            pbTable13.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -2604,7 +2605,7 @@ namespace Restaurant_Application
         private void pbTable14_Click(object sender, EventArgs e)
         {
             customerChoice = "14";
-            pbTable14.BackColor = Color.LightGoldenrodYellow;
+            pbTable14.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -2783,7 +2784,7 @@ namespace Restaurant_Application
         private void pbTable15_Click(object sender, EventArgs e)
         {
             customerChoice = "15";
-            pbTable15.BackColor = Color.LightGoldenrodYellow;
+            pbTable15.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -2962,7 +2963,7 @@ namespace Restaurant_Application
         private void pbTable16_Click(object sender, EventArgs e)
         {
             customerChoice = "16";
-            pbTable16.BackColor = Color.LightGoldenrodYellow;
+            pbTable16.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -3141,7 +3142,7 @@ namespace Restaurant_Application
         private void pbTable17_Click(object sender, EventArgs e)
         {
             customerChoice = "17";
-            pbTable17.BackColor = Color.LightGoldenrodYellow;
+            pbTable17.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -3320,7 +3321,7 @@ namespace Restaurant_Application
         private void pbTable18_Click(object sender, EventArgs e)
         {
             customerChoice = "18";
-            pbTable18.BackColor = Color.LightGoldenrodYellow;
+            pbTable18.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -3499,7 +3500,7 @@ namespace Restaurant_Application
         private void pbTable19_Click(object sender, EventArgs e)
         {
             customerChoice = "19";
-            pbTable19.BackColor = Color.LightGoldenrodYellow;
+            pbTable19.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -3678,7 +3679,7 @@ namespace Restaurant_Application
         private void pbTable20_Click(object sender, EventArgs e)
         {
             customerChoice = "20";
-            pbTable20.BackColor = Color.LightGoldenrodYellow;
+            pbTable20.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
             btnSelect.Enabled = true;
 
@@ -3877,6 +3878,43 @@ namespace Restaurant_Application
             
             btnSelect.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
             btnSelect.Enabled = false;
+
+            pictureBox1.Location = new Point(85, 29);
+
+            pbTable1.Location = new Point(368, 153);
+            pbTable2.Location = new Point(463,153);
+            pbTable3.Location = new Point(753, 151);
+            pbTable4.Location = new Point(738, 660);
+            pbTable5.Location = new Point(1030, 660);
+
+            pbTable6.Location = new Point(425, 294);
+            pbTable7.Location = new Point(767, 303);
+            pbTable8.Location = new Point(913, 355);
+            pbTable9.Location = new Point(536, 502);
+            pbTable10.Location = new Point(385, 453);
+            pbTable11.Location = new Point(864, 657);
+            pbTable12.Location = new Point(1054, 555);
+
+            pbTable13.Location = new Point(864, 151);
+            pbTable14.Location = new Point(915, 494);
+            pbTable15.Location = new Point(1170, 652);
+            pbTable16.Location = new Point(559, 655);
+
+            pbTable17.Location = new Point(578, 336);
+            pbTable18.Location = new Point(726, 470);
+            pbTable19.Location = new Point(1083, 425);
+
+            pbTable20.Location = new Point(572, 150);
+
+            int picWidth = pictureBox1.Width;
+            picWidth = picWidth / 4;
+
+            int position = pictureBox1.Left;
+            position = position + picWidth;
+
+            lblDiners.Location = new Point(position - lblDiners.Text.Length / 2, 277);
+            lblSearch.Location = new Point(position - lblSearch.Text.Length / 2, 343);
+            label1.Location = new Point(position - label1.Text.Length / 2, 409);
         }
     }
 }

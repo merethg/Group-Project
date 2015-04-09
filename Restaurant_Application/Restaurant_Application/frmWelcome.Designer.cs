@@ -67,7 +67,7 @@
             this.cmnOptions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmnOptions.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmnOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmnOptions.ForeColor = System.Drawing.Color.Fuchsia;
+            this.cmnOptions.ForeColor = System.Drawing.Color.Black;
             this.cmnOptions.FormattingEnabled = true;
             this.cmnOptions.Items.AddRange(new object[] {
             "1 PERSON",

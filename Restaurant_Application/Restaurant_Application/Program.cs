@@ -16,6 +16,7 @@ namespace Restaurant_Application
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmWelcome());
+            //Application.Run(new frmTableSelection());
         }
     }
 }
