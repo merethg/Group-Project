@@ -111,6 +111,7 @@ namespace protype__groupwork_
         private void btnOrder_Click(object sender, EventArgs e)
         {
             int randomNumber = rnd.Next(0, 100);
+            int itemNum;
             orderNumber = randomNumber;
             MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
 
@@ -118,9 +119,12 @@ namespace protype__groupwork_
             
             if (listBox2.Items.Count > 0)
             {
+                itemNum = 1;
+
                 foreach (string s in listBox2.Items)
                 {
-                    sqlClient.Insert("order_item", "Order_ID, Item_Name", "'" + randomNumber + "', '" + s + "'");                    
+                    sqlClient.Insert("order_item", "Order_ID, Item_Name, Item_Num", "'" + randomNumber + "', '" + s + "', '" + itemNum + "'");
+                    itemNum++;
                 }
                 FrmPayment pay = new FrmPayment(strTotal, this, orderNumber);
                 pay.Show();
