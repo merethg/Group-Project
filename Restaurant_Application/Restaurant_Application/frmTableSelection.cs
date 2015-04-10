@@ -3916,5 +3916,12 @@ namespace Restaurant_Application
             lblSearch.Location = new Point(position - lblSearch.Text.Length / 2, 343);
             label1.Location = new Point(position - label1.Text.Length / 2, 409);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmWelcome welcome = new frmWelcome();
+            welcome.Show();
+            this.Hide();
+        }
     }
 }
