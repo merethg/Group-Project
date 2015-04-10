@@ -19,7 +19,8 @@ namespace Restaurant_Application
         string customerChoice = "";
         bool noTables = false;
         int noTablesElapseTime = 1;
-
+        string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
+        MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
         DataSet ds = new DataSet();
         frmMessageBox msg = new frmMessageBox();
 
@@ -45,7 +46,7 @@ namespace Restaurant_Application
 
             try
             {
-                string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
+                //string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
                 MySqlConnection myConn = new MySqlConnection(myConnection);
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 MySqlCommand comand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);  ////########
@@ -244,7 +245,7 @@ namespace Restaurant_Application
         {
             if (customerChoice != "")
             {
-                MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
+                //MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
 
                 sqlClient.Update("table", "Table_Status = 'Un-Available'", "Table_ID = '" + customerChoice + "'");
 

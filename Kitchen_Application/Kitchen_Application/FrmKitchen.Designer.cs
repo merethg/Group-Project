@@ -49,6 +49,7 @@
             this.btnCooking5 = new System.Windows.Forms.Button();
             this.btnComplete6 = new System.Windows.Forms.Button();
             this.btnCooking6 = new System.Windows.Forms.Button();
+            this.tmrRemoveTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lstOrderOne
@@ -284,6 +285,11 @@
             this.btnCooking6.UseVisualStyleBackColor = false;
             this.btnCooking6.Click += new System.EventHandler(this.btnCooking6_Click);
             // 
+            // tmrRemoveTimer
+            // 
+            this.tmrRemoveTimer.Interval = 1000;
+            this.tmrRemoveTimer.Tick += new System.EventHandler(this.tmrRemoveTimer_Tick);
+            // 
             // FrmKitchen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -338,6 +344,7 @@
         private System.Windows.Forms.Button btnCooking5;
         private System.Windows.Forms.Button btnComplete6;
         private System.Windows.Forms.Button btnCooking6;
+        private System.Windows.Forms.Timer tmrRemoveTimer;
     }
 }
 

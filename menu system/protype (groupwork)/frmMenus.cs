@@ -23,6 +23,12 @@ namespace protype__groupwork_
         int orderNumber;
         DataSet ds = new DataSet();
         Random rnd = new Random();
+        MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
+
+        //to change server info such as ip or port change the string below.
+        //put the ip after datasorce and the port after port.
+        //change the username after username and the password to the server password.
+        string conection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
 
         #endregion
 
@@ -113,7 +119,7 @@ namespace protype__groupwork_
             int randomNumber = rnd.Next(0, 100);
             int itemNum;
             orderNumber = randomNumber;
-            MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
+            //MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
 
             sqlClient.Insert("order", "Order_ID, Table_ID, Status", "'" + randomNumber + "','" + intTableNumber.ToString() + "', 'Recieved'");
             
@@ -238,10 +244,6 @@ namespace protype__groupwork_
 
         #region (food sub catagories)
 
-        //to change server info such as ip or port change the string below.
-        //put the ip after datasorce and the port after port.
-        //change the username after username and the password to the server password.
-        string conection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
 
         //Pizza and Hot Drinks
         private void button8_Click(object sender, EventArgs e)

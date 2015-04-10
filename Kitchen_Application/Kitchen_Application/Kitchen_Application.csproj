@@ -53,6 +53,7 @@
     <Compile Include="FrmKitchen.Designer.cs">
       <DependentUpon>FrmKitchen.cs</DependentUpon>
     </Compile>
+    <Compile Include="MySQLClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmKitchen.resx">

@@ -17,6 +17,7 @@ namespace protype__groupwork_
         int intRefreshTime = 2;
         int intRelapsTime = 5;
         int intOrderNumber;
+        string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
         
         #endregion
 
@@ -56,7 +57,7 @@ namespace protype__groupwork_
 
                 try
                 {
-                    string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
+                    //string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                     //MySqlCommand comand = new MySqlCommand("select Status from demo.order where Table_ID = '2' ;", myConn);

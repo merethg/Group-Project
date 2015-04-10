@@ -7,14 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using MySQLClass;
 
 namespace Kitchen_Application
 {
     public partial class FrmKitchen : Form
     {
+
+        #region(Variables)
         string activeOrders ;
         string tableNumbers;
         int activeOrderTime = 5;
+        int removeTime = 120;
+        string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
+        MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
+        #endregion
 
         public FrmKitchen()
         {
@@ -24,13 +31,14 @@ namespace Kitchen_Application
         private void FrmKitchen_Load(object sender, EventArgs e)
         {
             tmrActiveOrder.Enabled = true;
+            tmrRemoveTimer.Enabled = true;
         }
 
         private void updateActiveOrders()
         {
             try
             {
-                string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
+                //string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
                 MySqlConnection myConn = new MySqlConnection(myConnection);
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 MySqlCommand comand = new MySqlCommand("select * from demo.order where Status in ('Recieved','Processing');", myConn);
@@ -74,7 +82,7 @@ namespace Kitchen_Application
             {
                 try
                 {
-                    string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
+                    //string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                     MySqlCommand comand = new MySqlCommand("select * from demo.order_item where Order_ID = '" + orderID + "' ;", myConn);
@@ -191,8 +199,6 @@ namespace Kitchen_Application
             }
         }
 
-
-
         private void tmrActiveOrder_Tick(object sender, EventArgs e)
         {
             activeOrderTime--;
@@ -249,9 +255,7 @@ namespace Kitchen_Application
                 }
             }
         }
-
-       
-
+              
         private void updateToProcessing(string orderNum)
         {
             //string orderNumber = lstOrderOne.Items[0].ToString();
@@ -261,7 +265,7 @@ namespace Kitchen_Application
 
             try
             {
-                string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
+                //string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
                 MySqlConnection myConn = new MySqlConnection(myConnection);
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 MySqlCommand comand = new MySqlCommand("update demo.order set Status = 'Processing' where Order_ID = '" + orderNumber + "' ;", myConn);
@@ -401,6 +405,19 @@ namespace Kitchen_Application
         }
         
         #endregion
+
+        private void tmrRemoveTimer_Tick(object sender, EventArgs e)
+        {
+            removeTime--;
+
+            if (removeTime == 0)
+            {
+                removeTime = 120;
+
+                sqlClient.Delete("order", "Status = 'Complete'");
+                //sqlClient.Update("order", "Status = 'Ready'", "Status = 'Complete'");
+            }
+        }
 
       
 
