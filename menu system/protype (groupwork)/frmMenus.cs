@@ -85,32 +85,48 @@ namespace protype__groupwork_
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
-        {
-            double holder = 0.00;
-            string value;
+        {           
+            double priceToTake = 0.00;
+            string foodItem;
 
-            foreach (string item in listBox1.Items)
+            foreach (string item in listBox2.Items)
             {
                 if (item == listBox2.SelectedItem)
                 {
-                    //calcuates value to take away from total
-                    value = listBox1.Items[listBox1.FindString(item) + 2].ToString();
-                    value = value.Remove(0, 1);
-                    holder = Convert.ToDouble(value);
+                    foodItem = listBox2.SelectedItem.ToString();
+
+                    try
+                    {
+                        string myConnection = conection;
+                        MySqlConnection myConn = new MySqlConnection(myConnection);
+                        MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                        MySqlCommand comand = new MySqlCommand("select Price from demo.menu_item where Item_Name = '" + foodItem + "' ;", myConn);
+                        MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
+                        myConn.Open();
+
+                        MySqlDataReader reader = comand.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            priceToTake = reader.GetDouble(0);
+                        }
+                        myConn.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
                 }
             }
+                
 
             listBox2.Items.Remove(listBox2.SelectedItem);
-            total = total - holder;
 
-            //Sets total if no items are in listbox
-            if ((listBox2.Items.Count) <= 0)
-            {
-                total = 0.00;
-            }
-            
+            total = total - priceToTake;
+                        
             label1.Text = String.Format("Total = {0:C}", total);
+
 
         }
 
