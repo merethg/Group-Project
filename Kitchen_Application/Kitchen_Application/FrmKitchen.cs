@@ -15,12 +15,14 @@ namespace Kitchen_Application
     {
 
         #region(Variables)
+
         string activeOrders ;
         string tableNumbers;
         int activeOrderTime = 5;
         int removeTime = 120;
         string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
         MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
+        
         #endregion
 
         public FrmKitchen()
@@ -33,6 +35,8 @@ namespace Kitchen_Application
             tmrActiveOrder.Enabled = true;
             tmrRemoveTimer.Enabled = true;
         }
+
+        #region(Database Retrieval Methods)
 
         private void updateActiveOrders()
         {
@@ -199,63 +203,10 @@ namespace Kitchen_Application
             }
         }
 
-        private void tmrActiveOrder_Tick(object sender, EventArgs e)
-        {
-            activeOrderTime--;
+        #endregion
 
-            if (activeOrderTime == 0)
-            {
-                activeOrders = "";
+        #region(Database Update Methods)
 
-                lstOrderOne.Items.Clear();
-                lstOrderTwo.Items.Clear();
-                lstOrderThree.Items.Clear();
-                lstOrderFour.Items.Clear();
-                lstOrderFive.Items.Clear();
-                lstOrderSix.Items.Clear();
-
-                updateActiveOrders();
-                activeOrderTime = 30;
-                getOrders();
-
-                if (lstOrderOne.Items.Count <= 0)
-                {
-                    btnCooking1.Enabled = false;
-                    btnComplete.Enabled = false;
-                }
-
-                if (lstOrderTwo.Items.Count <= 0)
-                {
-                    btnCooking2.Enabled = false;
-                    btnComplete2.Enabled = false;
-                }
-
-                if (lstOrderThree.Items.Count <= 0)
-                {
-                    btnCooking3.Enabled = false;
-                    btnComplete3.Enabled = false;
-                }
-
-                if (lstOrderFour.Items.Count <= 0)
-                {
-                    btnCooking4.Enabled = false;
-                    btnComplete4.Enabled = false;
-                }
-
-                if (lstOrderFive.Items.Count <= 0)
-                {
-                    btnCooking5.Enabled = false;
-                    btnComplete5.Enabled = false;
-                }
-
-                if (lstOrderSix.Items.Count <= 0)
-                {
-                    btnCooking6.Enabled = false;
-                    btnComplete6.Enabled = false;
-                }
-            }
-        }
-              
         private void updateToProcessing(string orderNum)
         {
             //string orderNumber = lstOrderOne.Items[0].ToString();
@@ -316,6 +267,9 @@ namespace Kitchen_Application
             }
         }
 
+        #endregion
+
+        #region(Buttons)
 
         #region(Cooking Buttons)
         private void btnCooking1_Click(object sender, EventArgs e)
@@ -406,6 +360,67 @@ namespace Kitchen_Application
         
         #endregion
 
+        #endregion
+
+        #region(Timers)
+
+        private void tmrActiveOrder_Tick(object sender, EventArgs e)
+        {
+            activeOrderTime--;
+
+            if (activeOrderTime == 0)
+            {
+                activeOrders = "";
+
+                lstOrderOne.Items.Clear();
+                lstOrderTwo.Items.Clear();
+                lstOrderThree.Items.Clear();
+                lstOrderFour.Items.Clear();
+                lstOrderFive.Items.Clear();
+                lstOrderSix.Items.Clear();
+
+                updateActiveOrders();
+                activeOrderTime = 30;
+                getOrders();
+
+                if (lstOrderOne.Items.Count <= 0)
+                {
+                    btnCooking1.Enabled = false;
+                    btnComplete.Enabled = false;
+                }
+
+                if (lstOrderTwo.Items.Count <= 0)
+                {
+                    btnCooking2.Enabled = false;
+                    btnComplete2.Enabled = false;
+                }
+
+                if (lstOrderThree.Items.Count <= 0)
+                {
+                    btnCooking3.Enabled = false;
+                    btnComplete3.Enabled = false;
+                }
+
+                if (lstOrderFour.Items.Count <= 0)
+                {
+                    btnCooking4.Enabled = false;
+                    btnComplete4.Enabled = false;
+                }
+
+                if (lstOrderFive.Items.Count <= 0)
+                {
+                    btnCooking5.Enabled = false;
+                    btnComplete5.Enabled = false;
+                }
+
+                if (lstOrderSix.Items.Count <= 0)
+                {
+                    btnCooking6.Enabled = false;
+                    btnComplete6.Enabled = false;
+                }
+            }
+        }
+
         private void tmrRemoveTimer_Tick(object sender, EventArgs e)
         {
             removeTime--;
@@ -419,14 +434,7 @@ namespace Kitchen_Application
             }
         }
 
-      
-
-
-
-
-
-
-
-
+        #endregion
+        
     }
 }

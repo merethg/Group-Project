@@ -13,6 +13,8 @@ namespace Restaurant_Application
 {
     public partial class frmTableSelection : Form
     {
+        #region(Variables)
+        
         int searchValue;
         int elapseTime = 5;
         string tables = "";
@@ -23,6 +25,10 @@ namespace Restaurant_Application
         MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
         DataSet ds = new DataSet();
         frmMessageBox msg = new frmMessageBox();
+        
+        #endregion
+
+        #region(Constructors)
 
         //default constructor
         public frmTableSelection()
@@ -34,6 +40,47 @@ namespace Restaurant_Application
         public frmTableSelection(string strDiners)
         {
             InitializeComponent();
+
+            btnSelect.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnSelect.Enabled = false;
+
+            pictureBox1.Location = new Point(85, 29);
+
+            pbTable1.Location = new Point(368, 153);
+            pbTable2.Location = new Point(463, 153);
+            pbTable3.Location = new Point(753, 151);
+            pbTable4.Location = new Point(738, 660);
+            pbTable5.Location = new Point(1030, 660);
+
+            pbTable6.Location = new Point(425, 294);
+            pbTable7.Location = new Point(767, 303);
+            pbTable8.Location = new Point(913, 355);
+            pbTable9.Location = new Point(536, 502);
+            pbTable10.Location = new Point(385, 453);
+            pbTable11.Location = new Point(864, 657);
+            pbTable12.Location = new Point(1054, 555);
+
+            pbTable13.Location = new Point(864, 151);
+            pbTable14.Location = new Point(915, 494);
+            pbTable15.Location = new Point(1170, 652);
+            pbTable16.Location = new Point(559, 655);
+
+            pbTable17.Location = new Point(578, 336);
+            pbTable18.Location = new Point(726, 470);
+            pbTable19.Location = new Point(1083, 425);
+
+            pbTable20.Location = new Point(572, 150);
+
+            int picWidth = pictureBox1.Width;
+            picWidth = picWidth / 4;
+
+            int position = pictureBox1.Left;
+            position = position + picWidth;
+
+            lblDiners.Location = new Point(position - lblDiners.Text.Length / 2, 277);
+            lblSearch.Location = new Point(position - lblSearch.Text.Length / 2, 343);
+            label1.Location = new Point(position - label1.Text.Length / 2, 409);
+
             lblDiners.Text = "Number of Diners: " + strDiners;
             searchValue = Convert.ToInt32(strDiners);
 
@@ -241,6 +288,10 @@ namespace Restaurant_Application
             }
         }
 
+        #endregion
+
+        #region(Buttons)
+
         private void btnSelect_Click(object sender, EventArgs e)
         {
             if (customerChoice != "")
@@ -253,22 +304,16 @@ namespace Restaurant_Application
                 elapseTimer.Enabled = true;
             }
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
+        
+        private void button1_Click(object sender, EventArgs e)
         {
-            elapseTime -= 1;
-
-            if (elapseTime == 0)
-            {
-                this.Hide();
-                frmWelcome wel = new frmWelcome();
-                wel.Show();
-                msg.Hide();
-                elapseTimer.Enabled = false;
-            }
+            frmWelcome welcome = new frmWelcome();
+            welcome.Show();
+            this.Hide();
         }
-
-        //table button press controls
+        
+        #endregion
+               
         #region (Table button press methods)
         private void pbTable1_Click(object sender, EventArgs e)
         {
@@ -3857,6 +3902,8 @@ namespace Restaurant_Application
         }
         #endregion
 
+        #region(Timers)
+
         private void tmrNoTables_Tick(object sender, EventArgs e)
         {
             noTablesElapseTime -= 1;
@@ -3870,59 +3917,28 @@ namespace Restaurant_Application
             }
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            elapseTime -= 1;
+
+            if (elapseTime == 0)
+            {
+                this.Hide();
+                frmWelcome wel = new frmWelcome();
+                wel.Show();
+                msg.Hide();
+                elapseTimer.Enabled = false;
+            }
+        }
+
+        #endregion
+
         private void frmTableSelection_Load(object sender, EventArgs e)
         {
             if (noTables)
             {
                 tmrNoTables.Enabled = true;
             }
-            
-            btnSelect.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
-            btnSelect.Enabled = false;
-
-            pictureBox1.Location = new Point(85, 29);
-
-            pbTable1.Location = new Point(368, 153);
-            pbTable2.Location = new Point(463,153);
-            pbTable3.Location = new Point(753, 151);
-            pbTable4.Location = new Point(738, 660);
-            pbTable5.Location = new Point(1030, 660);
-
-            pbTable6.Location = new Point(425, 294);
-            pbTable7.Location = new Point(767, 303);
-            pbTable8.Location = new Point(913, 355);
-            pbTable9.Location = new Point(536, 502);
-            pbTable10.Location = new Point(385, 453);
-            pbTable11.Location = new Point(864, 657);
-            pbTable12.Location = new Point(1054, 555);
-
-            pbTable13.Location = new Point(864, 151);
-            pbTable14.Location = new Point(915, 494);
-            pbTable15.Location = new Point(1170, 652);
-            pbTable16.Location = new Point(559, 655);
-
-            pbTable17.Location = new Point(578, 336);
-            pbTable18.Location = new Point(726, 470);
-            pbTable19.Location = new Point(1083, 425);
-
-            pbTable20.Location = new Point(572, 150);
-
-            int picWidth = pictureBox1.Width;
-            picWidth = picWidth / 4;
-
-            int position = pictureBox1.Left;
-            position = position + picWidth;
-
-            lblDiners.Location = new Point(position - lblDiners.Text.Length / 2, 277);
-            lblSearch.Location = new Point(position - lblSearch.Text.Length / 2, 343);
-            label1.Location = new Point(position - label1.Text.Length / 2, 409);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            frmWelcome welcome = new frmWelcome();
-            welcome.Show();
-            this.Hide();
         }
     }
 }

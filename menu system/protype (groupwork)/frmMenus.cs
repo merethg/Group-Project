@@ -24,10 +24,6 @@ namespace protype__groupwork_
         DataSet ds = new DataSet();
         Random rnd = new Random();
         MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
-
-        //to change server info such as ip or port change the string below.
-        //put the ip after datasorce and the port after port.
-        //change the username after username and the password to the server password.
         string conection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
 
         #endregion
@@ -172,20 +168,27 @@ namespace protype__groupwork_
             {
 
             }
-            else if (Convert.ToInt32(listBox1.SelectedIndex) % 4 == 1)
-            {
-                listBox1.SetSelected(Convert.ToInt32(listBox1.SelectedIndex) - 1, true);
-            }
-            else if (Convert.ToInt32(listBox1.SelectedIndex) % 4 == 2)
-            {
-                listBox1.SetSelected(Convert.ToInt32(listBox1.SelectedIndex) - 2, true);
-            }
             else
-
-                if (listBox1.SelectedItem == " ")
+            {
+                if (Convert.ToInt32(listBox1.SelectedIndex) % 4 == 1)
                 {
-                    listBox1.SetSelected(Convert.ToInt32(listBox1.SelectedIndex) - 3, true);
+                    listBox1.SetSelected(Convert.ToInt32(listBox1.SelectedIndex) - 1, true);
                 }
+                else
+                {
+                    if (Convert.ToInt32(listBox1.SelectedIndex) % 4 == 2)
+                    {
+                        listBox1.SetSelected(Convert.ToInt32(listBox1.SelectedIndex) - 2, true);
+                    }
+                    else
+                    {
+                        if (listBox1.SelectedItem == " ")
+                        {
+                            listBox1.SetSelected(Convert.ToInt32(listBox1.SelectedIndex) - 3, true);
+                        }
+                    }
+                }
+            }
         }
 
         #endregion

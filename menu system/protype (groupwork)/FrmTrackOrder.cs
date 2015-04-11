@@ -32,6 +32,11 @@ namespace protype__groupwork_
         {
             InitializeComponent();
             intOrderNumber = orderNumber;
+
+            lblOrderMessage.Text = "Thank you your order has been placed";
+            picOrderActive.BackColor = Color.Red;
+            picOrderCooking.BackColor = Color.Red;
+            picOrderComplete.BackColor = Color.Red;
         }
         
         #endregion
@@ -39,10 +44,11 @@ namespace protype__groupwork_
         private void FrmTrackOrder_Load(object sender, EventArgs e)
         {
             trackTimer.Enabled = true;
-            lblOrderMessage.Text = "Thank you your order has been placed";
-            picOrderActive.BackColor = Color.Red;
-            picOrderCooking.BackColor = Color.Red;
-            picOrderComplete.BackColor = Color.Red;
+
+            //lblOrderMessage.Text = "Thank you your order has been placed";
+            //picOrderActive.BackColor = Color.Red;
+            //picOrderCooking.BackColor = Color.Red;
+            //picOrderComplete.BackColor = Color.Red;
         }
 
         #region (Timers)

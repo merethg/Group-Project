@@ -14,6 +14,15 @@ namespace Restaurant_Application
         public frmWelcome()
         {
             InitializeComponent();
+
+            lblWelcome.Left = (this.ClientSize.Width - lblWelcome.Width) / 2;
+            lbluserMessage.Left = (this.ClientSize.Width - lbluserMessage.Width) / 2;
+            cmnOptions.Left = (this.ClientSize.Width - cmnOptions.Width) / 2;
+            btnAccept.Left = (this.ClientSize.Width - btnAccept.Width) / 2;
+
+            
+            btnAccept.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            cmnOptions.SelectedIndex = 1;
         }
 
         private void cmnOptions_SelectedIndexChanged(object sender, EventArgs e)
@@ -34,15 +43,5 @@ namespace Restaurant_Application
             this.Hide();
         }
 
-        private void frmWelcome_Load(object sender, EventArgs e)
-        {
-            btnAccept.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
-            cmnOptions.SelectedIndex = 1;
-
-            lblWelcome.Left = (this.ClientSize.Width - lblWelcome.Width) / 2;
-            lbluserMessage.Left = (this.ClientSize.Width - lbluserMessage.Width) / 2;
-            cmnOptions.Left = (this.ClientSize.Width - cmnOptions.Width) / 2;
-            btnAccept.Left  = (this.ClientSize.Width - btnAccept.Width) / 2;
-        }
     }
 }

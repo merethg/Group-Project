@@ -57,7 +57,7 @@
             this.pbTable16 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tmrNoTables = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTable2)).BeginInit();
@@ -410,18 +410,18 @@
             // 
             this.tmrNoTables.Tick += new System.EventHandler(this.tmrNoTables_Tick);
             // 
-            // button1
+            // btnCancel
             // 
-            this.button1.BackColor = System.Drawing.Color.Olive;
-            this.button1.Font = new System.Drawing.Font("Wide Latin", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(84, 689);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(189, 98);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCancel.BackColor = System.Drawing.Color.Olive;
+            this.btnCancel.Font = new System.Drawing.Font("Wide Latin", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(84, 689);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(189, 98);
+            this.btnCancel.TabIndex = 29;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmTableSelection
             // 
@@ -429,7 +429,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbTable20);
             this.Controls.Add(this.pbTable19);
@@ -516,6 +516,6 @@
         private System.Windows.Forms.PictureBox pbTable16;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer tmrNoTables;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
