@@ -32,6 +32,7 @@
             this.btnMenus = new System.Windows.Forms.Button();
             this.lblTableNumber = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnSetTable = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,12 +66,25 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // btnSetTable
+            // 
+            this.btnSetTable.Location = new System.Drawing.Point(142, 346);
+            this.btnSetTable.Name = "btnSetTable";
+            this.btnSetTable.Size = new System.Drawing.Size(135, 45);
+            this.btnSetTable.TabIndex = 3;
+            this.btnSetTable.Text = "Set to available";
+            this.btnSetTable.UseVisualStyleBackColor = true;
+            this.btnSetTable.Visible = false;
+            this.btnSetTable.Click += new System.EventHandler(this.btnSetTable_Click);
             // 
             // FrmTableIdentification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1878, 1045);
+            this.Controls.Add(this.btnSetTable);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblTableNumber);
             this.Controls.Add(this.btnMenus);
@@ -89,5 +103,6 @@
         private System.Windows.Forms.Button btnMenus;
         private System.Windows.Forms.Label lblTableNumber;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnSetTable;
     }
 }

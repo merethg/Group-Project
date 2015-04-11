@@ -34,8 +34,19 @@ namespace protype__groupwork_
             menu.Show();
             this.Hide();
         }
-        
-        #endregion
 
+        private void btnSetTable_Click(object sender, EventArgs e)
+        {
+            FrmStaffLogin staff = new FrmStaffLogin(tableNumber);
+            staff.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            btnSetTable.Visible = true;
+        }
+
+        #endregion
+        
     }
 }
