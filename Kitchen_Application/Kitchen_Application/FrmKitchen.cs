@@ -69,10 +69,11 @@ namespace Kitchen_Application
         private void getOrders()
         {
             string[] orderNumbers = activeOrders.Split(' ');
-            string[] arTableNumbers = {};// = tableNumbers.Split(' ');
+            string[] arTableNumbers = {};
             string order = "";
             string[] orders = {};
             int i = -1;
+            bool processing = false;
 
             if (activeOrders.Length >= 1)
             {
@@ -80,7 +81,7 @@ namespace Kitchen_Application
                 tableNumbers = tableNumbers.Remove(0, 1);
                 arTableNumbers = tableNumbers.Split(' ');
             }
-            
+
 
             foreach (string orderID in orderNumbers)
             {
@@ -107,11 +108,37 @@ namespace Kitchen_Application
                     MessageBox.Show(ex.Message);
                 }
 
+                try
+                {
+                    //string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
+                    MySqlConnection myConn = new MySqlConnection(myConnection);
+                    MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                    MySqlCommand comand = new MySqlCommand("select Status from demo.order where Order_ID = '" + orderID + "' ;", myConn);
+                    MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
+                    myConn.Open();
+
+                    MySqlDataReader reader = comand.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        if (reader.GetString(0) == "Processing")
+                        {
+                            processing = true;
+                        }
+                    }
+
+                    myConn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+
                 if (order.Length >= 1)
                 {
                     order = order.Remove(0, 1);
-
-
+                    
                     orders = order.Split('/');
 
                     if (lstOrderOne.Items.Count <= 0)
@@ -121,7 +148,11 @@ namespace Kitchen_Application
                         lstOrderOne.Items.Add("");
                         lstOrderOne.Items.AddRange(orders);
 
-                        btnCooking1.Enabled = true;
+                        if (!processing)
+                        {
+                            btnCooking1.Enabled = true;
+                        }
+
                         btnComplete.Enabled = true;
                     }
                     else
@@ -132,8 +163,12 @@ namespace Kitchen_Application
                             lstOrderTwo.Items.Add("Table_ID: " + arTableNumbers[i]);
                             lstOrderTwo.Items.Add("");
                             lstOrderTwo.Items.AddRange(orders);
-
-                            btnCooking2.Enabled = true;
+                            
+                            if (!processing)
+                            {
+                                btnCooking2.Enabled = true;
+                            }
+                            
                             btnComplete2.Enabled = true;
                         }
                         else
@@ -144,8 +179,12 @@ namespace Kitchen_Application
                                 lstOrderThree.Items.Add("Table_ID: " + arTableNumbers[i]);
                                 lstOrderThree.Items.Add("");
                                 lstOrderThree.Items.AddRange(orders);
-
-                                btnCooking3.Enabled = true;
+                                
+                                if (!processing)
+                                {
+                                    btnCooking3.Enabled = true;
+                                }
+                                
                                 btnComplete3.Enabled = true;
                             }
                             else
@@ -157,7 +196,11 @@ namespace Kitchen_Application
                                     lstOrderFour.Items.Add("");
                                     lstOrderFour.Items.AddRange(orders);
 
-                                    btnCooking4.Enabled = true;
+                                    if (!processing)
+                                    {
+                                        btnCooking4.Enabled = true;
+                                    }
+
                                     btnComplete4.Enabled = true;
                                 }
                                 else
@@ -168,8 +211,12 @@ namespace Kitchen_Application
                                         lstOrderFive.Items.Add("Table_ID: " + arTableNumbers[i]);
                                         lstOrderFive.Items.Add("");
                                         lstOrderFive.Items.AddRange(orders);
-
-                                        btnCooking5.Enabled = true;
+                                        
+                                        if (!processing)
+                                        {
+                                            btnCooking5.Enabled = true;
+                                        }
+                                        
                                         btnComplete5.Enabled = true;
                                     }
                                     else
@@ -181,7 +228,11 @@ namespace Kitchen_Application
                                             lstOrderSix.Items.Add("");
                                             lstOrderSix.Items.AddRange(orders);
 
-                                            btnCooking6.Enabled = true;
+                                            if (!processing)
+                                            {
+                                                btnCooking6.Enabled = true;
+                                            }
+
                                             btnComplete6.Enabled = true;
                                         }
                                     }
@@ -246,7 +297,7 @@ namespace Kitchen_Application
 
             try
             {
-                string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
+                //string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
                 MySqlConnection myConn = new MySqlConnection(myConnection);
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 MySqlCommand comand = new MySqlCommand("update demo.order set Status = 'Complete' where Order_ID = '" + orderNumber + "' ;", myConn);
@@ -275,32 +326,39 @@ namespace Kitchen_Application
         private void btnCooking1_Click(object sender, EventArgs e)
         {
             updateToProcessing(lstOrderOne.Items[0].ToString());
+            btnCooking1.Enabled = false;
         }
 
         private void btnCooking2_Click(object sender, EventArgs e)
         {
             updateToProcessing(lstOrderTwo.Items[0].ToString());
+            btnCooking2.Enabled = false;
         }
         
         private void btnCooking3_Click(object sender, EventArgs e)
         {
             updateToProcessing(lstOrderThree.Items[0].ToString());
+            btnCooking3.Enabled = false;
         }
 
         private void btnCooking4_Click(object sender, EventArgs e)
         {
             updateToProcessing(lstOrderFour.Items[0].ToString());
+            btnCooking4.Enabled = false;
         }
 
         private void btnCooking5_Click(object sender, EventArgs e)
         {
             updateToProcessing(lstOrderFive.Items[0].ToString());
+            btnCooking5.Enabled = false;
         }
 
         private void btnCooking6_Click(object sender, EventArgs e)
         {
             updateToProcessing(lstOrderSix.Items[0].ToString());
+            btnCooking6.Enabled = false;
         }
+
         #endregion
 
         #region(Complete Buttons)
@@ -380,8 +438,9 @@ namespace Kitchen_Application
                 lstOrderSix.Items.Clear();
 
                 updateActiveOrders();
-                activeOrderTime = 30;
                 getOrders();
+
+                activeOrderTime = 30;
 
                 if (lstOrderOne.Items.Count <= 0)
                 {
