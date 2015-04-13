@@ -37,27 +37,40 @@ namespace protype__groupwork_
         public FrmPayment()
         {
             InitializeComponent();
+            this.BackgroundImage = Properties.Resources.bg2;
+            btnOrder.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnOrder.ForeColor = Color.White;
         }
 
         public FrmPayment(string total)
         {
             InitializeComponent();
-            txtInvoiceTotal.Text = total;
+            lblPrice.Text = total;
+            this.BackgroundImage = Properties.Resources.bg2;
+            btnOrder.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnOrder.ForeColor = Color.White;
         }
 
         public FrmPayment(string total, frmMenus frmM)
         {
             InitializeComponent();
-            txtInvoiceTotal.Text = total;
+            lblPrice.Text = total;
             menu = frmM;
+            btnOrder.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnOrder.ForeColor = Color.White;
+            this.BackgroundImage = Properties.Resources.bg2;
         }
 
         public FrmPayment(string total, frmMenus frmM, int orderNumber)
         {
             InitializeComponent();
-            txtInvoiceTotal.Text = total;
+            lblPrice.Text = total;
             menu = frmM;
             intOrderNumber = orderNumber;
+            lblOrderID.Text = orderNumber.ToString();
+            btnOrder.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnOrder.ForeColor = Color.White;
+            this.BackgroundImage = Properties.Resources.bg2;
         }
         #endregion
 
@@ -183,7 +196,7 @@ namespace protype__groupwork_
                         //Checks to see if last name field is filled
                         if (strLastName == "")
                         {
-                            MessageBox.Show("Please enter your first name");
+                            MessageBox.Show("Please enter your last name");
                             txtLastName.Clear();
                             lblLastName.ForeColor = Color.Red;
                             error = true;

@@ -28,6 +28,38 @@ namespace Kitchen_Application
         public FrmKitchen()
         {
             InitializeComponent();
+            this.BackgroundImage = Properties.Resources.bg2;
+
+            #region(Button BackColour)
+            btnComplete.BackColor = Color.Green;
+            btnComplete2.BackColor = Color.Green;
+            btnComplete3.BackColor = Color.Green;
+            btnComplete4.BackColor = Color.Green;
+            btnComplete5.BackColor = Color.Green;
+            btnComplete6.BackColor = Color.Green;
+
+            btnCooking1.BackColor = Color.MediumOrchid;
+            btnCooking2.BackColor = Color.MediumOrchid;
+            btnCooking3.BackColor = Color.MediumOrchid;
+            btnCooking4.BackColor = Color.MediumOrchid;
+            btnCooking5.BackColor = Color.MediumOrchid;
+            btnCooking6.BackColor = Color.MediumOrchid;
+            #endregion
+
+            #region(Button Fore Colour)
+            btnComplete.ForeColor = Color.White;
+            btnComplete2.ForeColor = Color.White;
+            btnComplete3.ForeColor = Color.White;
+            btnComplete4.ForeColor = Color.White;
+            btnComplete5.ForeColor = Color.White;
+            btnComplete6.ForeColor = Color.White;
+            btnCooking1.ForeColor = Color.White;
+            btnCooking2.ForeColor = Color.White;
+            btnCooking3.ForeColor = Color.White;
+            btnCooking4.ForeColor = Color.White;
+            btnCooking5.ForeColor = Color.White;
+            btnCooking6.ForeColor = Color.White;
+            #endregion
         }
 
         private void FrmKitchen_Load(object sender, EventArgs e)

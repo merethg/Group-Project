@@ -57,9 +57,9 @@
             this.lbluserMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.lbluserMessage.Location = new System.Drawing.Point(618, 388);
             this.lbluserMessage.Name = "lbluserMessage";
-            this.lbluserMessage.Size = new System.Drawing.Size(651, 48);
+            this.lbluserMessage.Size = new System.Drawing.Size(665, 48);
             this.lbluserMessage.TabIndex = 1;
-            this.lbluserMessage.Text = "Please Enter the number of diners";
+            this.lbluserMessage.Text = "Please Enter the Number of Diners";
             // 
             // cmnOptions
             // 
@@ -104,9 +104,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(85, 79);
+            this.pictureBox1.Location = new System.Drawing.Point(45, 38);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(207, 207);
+            this.pictureBox1.Size = new System.Drawing.Size(300, 300);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 19;
             this.pictureBox1.TabStop = false;
@@ -116,7 +116,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1920, 1080);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.lbluserMessage);
@@ -128,7 +127,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.frmWelcome_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

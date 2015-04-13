@@ -41,11 +41,13 @@ namespace Restaurant_Application
         {
             InitializeComponent();
 
+            this.BackgroundImage = Properties.Resources.tblayoutToUse;
             btnSelect.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
             btnSelect.Enabled = false;
 
             pictureBox1.Location = new Point(85, 29);
 
+            #region(Table Positions)
             pbTable1.Location = new Point(368, 153);
             pbTable2.Location = new Point(463, 153);
             pbTable3.Location = new Point(753, 151);
@@ -70,16 +72,12 @@ namespace Restaurant_Application
             pbTable19.Location = new Point(1083, 425);
 
             pbTable20.Location = new Point(572, 150);
+            #endregion
 
-            int picWidth = pictureBox1.Width;
-            picWidth = picWidth / 4;
 
-            int position = pictureBox1.Left;
-            position = position + picWidth;
-
-            lblDiners.Location = new Point(position - lblDiners.Text.Length / 2, 277);
-            lblSearch.Location = new Point(position - lblSearch.Text.Length / 2, 343);
-            label1.Location = new Point(position - label1.Text.Length / 2, 409);
+            lblDiners.Location = new Point(pictureBox1.Left, 270);
+            lblSearch.Location = new Point(pictureBox1.Left, 300);
+            label1.Location = new Point(pictureBox1.Left, 330);
 
             lblDiners.Text = "Number of Diners: " + strDiners;
             searchValue = Convert.ToInt32(strDiners);

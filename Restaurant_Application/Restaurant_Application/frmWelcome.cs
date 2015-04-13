@@ -15,6 +15,8 @@ namespace Restaurant_Application
         {
             InitializeComponent();
 
+            this.BackgroundImage = Properties.Resources.bg2;
+
             lblWelcome.Left = (this.ClientSize.Width - lblWelcome.Width) / 2;
             lbluserMessage.Left = (this.ClientSize.Width - lbluserMessage.Width) / 2;
             cmnOptions.Left = (this.ClientSize.Width - cmnOptions.Width) / 2;
@@ -41,7 +43,6 @@ namespace Restaurant_Application
             frmTableSelection tbs = new frmTableSelection(diners[0]);
             tbs.Show();
             this.Hide();
-        }
-
+        }      
     }
 }

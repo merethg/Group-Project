@@ -50,6 +50,7 @@
             // lblTableNumber
             // 
             this.lblTableNumber.AutoSize = true;
+            this.lblTableNumber.BackColor = System.Drawing.Color.Transparent;
             this.lblTableNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 500F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTableNumber.Location = new System.Drawing.Point(872, 9);
             this.lblTableNumber.Name = "lblTableNumber";
@@ -59,6 +60,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(59, 40);
             this.pictureBox1.Name = "pictureBox1";

@@ -33,6 +33,23 @@ namespace protype__groupwork_
         public frmMenus()
         {            
             InitializeComponent();
+            this.BackgroundImage = Properties.Resources.bg2;
+            btnAdd.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnClear.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnRemove.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnOrder.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnStarter.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19"); 
+            btnMain.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19"); 
+            btnDessert.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19"); 
+            btnDrinks.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            button1.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            button2.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            button8.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19"); 
+            button9.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19"); 
+            button10.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19"); 
+            button11.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19"); 
+            button12.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19"); 
+            
         }
         
         //Initialises form taking tableNumber brom parent form
@@ -40,6 +57,22 @@ namespace protype__groupwork_
         {
             InitializeComponent();
             intTableNumber = tableNumber;
+            this.BackgroundImage = Properties.Resources.bg2; 
+            btnAdd.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnClear.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnRemove.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnOrder.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnStarter.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnMain.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnDessert.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnDrinks.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            button1.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            button2.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            button8.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            button9.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            button10.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            button11.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            button12.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
         }
         
         #endregion
@@ -130,27 +163,60 @@ namespace protype__groupwork_
         {
             int randomNumber = rnd.Next(0, 100);
             int itemNum;
-            orderNumber = randomNumber;
-            //MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
+            int count = 0;
 
-            sqlClient.Insert("order", "Order_ID, Table_ID, Status", "'" + randomNumber + "','" + intTableNumber.ToString() + "', 'Recieved'");
-            
-            if (listBox2.Items.Count > 0)
+            do
             {
-                itemNum = 1;
-
-                foreach (string s in listBox2.Items)
+                orderNumber = randomNumber;
+                count = 0;
+                try
                 {
-                    sqlClient.Insert("order_item", "Order_ID, Item_Name, Item_Num", "'" + randomNumber + "', '" + s + "', '" + itemNum + "'");
-                    itemNum++;
+                    string myConnection = conection;
+                    MySqlConnection myConn = new MySqlConnection(myConnection);
+                    MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                    MySqlCommand comand = new MySqlCommand("select Order_ID from demo.order where Order_ID = '" + randomNumber.ToString() + "' ;", myConn);
+                    MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
+                    myConn.Open();
+
+                    MySqlDataReader reader = comand.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        count += 1;
+                    }
+                    myConn.Close();
                 }
-                FrmPayment pay = new FrmPayment(strTotal, this, orderNumber);
-                pay.Show();
-            }
-            else
-            {
-                MessageBox.Show("No items");
-            }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                if (count == 0)
+                {
+                    sqlClient.Insert("order", "Order_ID, Table_ID, Status", "'" + randomNumber + "','" + intTableNumber.ToString() + "', 'Recieved'");
+
+                    if (listBox2.Items.Count > 0)
+                    {
+                        itemNum = 1;
+
+                        foreach (string s in listBox2.Items)
+                        {
+                            sqlClient.Insert("order_item", "Order_ID, Item_Name, Item_Num", "'" + randomNumber + "', '" + s + "', '" + itemNum + "'");
+                            itemNum++;
+                        }
+                        FrmPayment pay = new FrmPayment(strTotal, this, orderNumber);
+                        pay.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No items");
+                    }
+                }
+                else
+                {
+                    randomNumber = rnd.Next(0, 999); 
+                }
+            } while (count > 0);
         }
         
         private void btnClear_Click(object sender, EventArgs e)

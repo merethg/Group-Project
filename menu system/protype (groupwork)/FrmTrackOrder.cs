@@ -26,17 +26,36 @@ namespace protype__groupwork_
         public FrmTrackOrder()
         {
             InitializeComponent();
+            this.BackgroundImage = Properties.Resources.bg2;
+
+            lblOrderMessage.Text = "Thank you your order has been placed";
+            picOrderActive.BackColor = Color.Red;
+            picOrderCooking.BackColor = Color.Red;
+            picOrderComplete.BackColor = Color.Red;
+
+            picOrderCooking.Location = new Point(this.Width / 2 - 90, this.Height/2 - picOrderCooking.Height / 2);
+            picOrderActive.Location = new Point(picOrderCooking.Left - (picOrderActive.Width + 30), this.Height / 2 - picOrderActive.Height / 2);
+            picOrderComplete.Location = new Point(picOrderCooking.Right + 30, this.Height / 2 - picOrderComplete.Height / 2);
+
+            lblOrderMessage.Location = new Point(this.Width / 2 - lblOrderMessage.Width / 2, 150);
         }
 
         public FrmTrackOrder(int orderNumber)
         {
             InitializeComponent();
             intOrderNumber = orderNumber;
+            this.BackgroundImage = Properties.Resources.bg;
 
             lblOrderMessage.Text = "Thank you your order has been placed";
             picOrderActive.BackColor = Color.Red;
             picOrderCooking.BackColor = Color.Red;
             picOrderComplete.BackColor = Color.Red;
+
+            picOrderCooking.Location = new Point(this.Width / 2 - picOrderCooking.Width / 2, this.Height / 2 - picOrderCooking.Height / 2);
+            picOrderActive.Location = new Point(picOrderCooking.Left - (picOrderActive.Width + 30), this.Height / 2 - picOrderActive.Height / 2);
+            picOrderComplete.Location = new Point(picOrderCooking.Right + 30, this.Height / 2 - picOrderComplete.Height / 2);
+            
+            lblOrderMessage.Location = new Point(this.Width / 2 - lblOrderMessage.Width / 2, 150); 
         }
         
         #endregion
@@ -44,11 +63,6 @@ namespace protype__groupwork_
         private void FrmTrackOrder_Load(object sender, EventArgs e)
         {
             trackTimer.Enabled = true;
-
-            //lblOrderMessage.Text = "Thank you your order has been placed";
-            //picOrderActive.BackColor = Color.Red;
-            //picOrderCooking.BackColor = Color.Red;
-            //picOrderComplete.BackColor = Color.Red;
         }
 
         #region (Timers)
@@ -81,6 +95,8 @@ namespace protype__groupwork_
                             picOrderCooking.BackColor = Color.Red;
                             picOrderComplete.BackColor = Color.Red;
                             lblOrderMessage.Text = "Your order has now been recieved";
+                            lblOrderMessage.ForeColor = Color.Red;
+                            lblOrderMessage.Location = new Point(this.Width / 2 - lblOrderMessage.Width / 2, 150);
                         }
 
                         if (reader.GetString(0) == "Processing")
@@ -89,6 +105,8 @@ namespace protype__groupwork_
                             picOrderCooking.BackColor = Color.Green;
                             picOrderComplete.BackColor = Color.Red;
                             lblOrderMessage.Text = "Your order is now being proesses";
+                            lblOrderMessage.ForeColor = Color.Orange;
+                            lblOrderMessage.Location = new Point(this.Width / 2 - lblOrderMessage.Width / 2, 150);
                         }
 
                         if (reader.GetString(0) == "Complete")
@@ -97,6 +115,8 @@ namespace protype__groupwork_
                             picOrderCooking.BackColor = Color.Green;
                             picOrderComplete.BackColor = Color.Green;
                             lblOrderMessage.Text = "Your order is now complete";
+                            lblOrderMessage.ForeColor = Color.Green;
+                            lblOrderMessage.Location = new Point(this.Width / 2 - lblOrderMessage.Width / 2, 150);
 
                             trackTimer.Enabled = false;
                             tmrRelapseTimer.Enabled = true;

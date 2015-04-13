@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmKitchen));
             this.lstOrderOne = new System.Windows.Forms.ListBox();
             this.lstOrderTwo = new System.Windows.Forms.ListBox();
             this.lstOrderThree = new System.Windows.Forms.ListBox();
@@ -114,10 +113,10 @@
             // 
             // btnCooking1
             // 
-            this.btnCooking1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(200)))), ((int)(((byte)(14)))));
+            this.btnCooking1.BackColor = System.Drawing.SystemColors.Control;
             this.btnCooking1.Enabled = false;
             this.btnCooking1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCooking1.ForeColor = System.Drawing.Color.White;
+            this.btnCooking1.ForeColor = System.Drawing.Color.Black;
             this.btnCooking1.Location = new System.Drawing.Point(488, 191);
             this.btnCooking1.Name = "btnCooking1";
             this.btnCooking1.Size = new System.Drawing.Size(150, 79);
@@ -128,10 +127,10 @@
             // 
             // btnComplete
             // 
-            this.btnComplete.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnComplete.BackColor = System.Drawing.SystemColors.Control;
             this.btnComplete.Enabled = false;
             this.btnComplete.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnComplete.ForeColor = System.Drawing.Color.White;
+            this.btnComplete.ForeColor = System.Drawing.Color.Black;
             this.btnComplete.Location = new System.Drawing.Point(488, 285);
             this.btnComplete.Name = "btnComplete";
             this.btnComplete.Size = new System.Drawing.Size(150, 79);
@@ -147,10 +146,10 @@
             // 
             // btnComplete2
             // 
-            this.btnComplete2.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnComplete2.BackColor = System.Drawing.SystemColors.Control;
             this.btnComplete2.Enabled = false;
             this.btnComplete2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnComplete2.ForeColor = System.Drawing.Color.White;
+            this.btnComplete2.ForeColor = System.Drawing.Color.Black;
             this.btnComplete2.Location = new System.Drawing.Point(1145, 291);
             this.btnComplete2.Name = "btnComplete2";
             this.btnComplete2.Size = new System.Drawing.Size(150, 79);
@@ -161,10 +160,10 @@
             // 
             // btnCooking2
             // 
-            this.btnCooking2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(200)))), ((int)(((byte)(14)))));
+            this.btnCooking2.BackColor = System.Drawing.SystemColors.Control;
             this.btnCooking2.Enabled = false;
             this.btnCooking2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCooking2.ForeColor = System.Drawing.Color.White;
+            this.btnCooking2.ForeColor = System.Drawing.Color.Black;
             this.btnCooking2.Location = new System.Drawing.Point(1145, 197);
             this.btnCooking2.Name = "btnCooking2";
             this.btnCooking2.Size = new System.Drawing.Size(150, 79);
@@ -175,10 +174,10 @@
             // 
             // btnComplete3
             // 
-            this.btnComplete3.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnComplete3.BackColor = System.Drawing.SystemColors.Control;
             this.btnComplete3.Enabled = false;
             this.btnComplete3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnComplete3.ForeColor = System.Drawing.Color.White;
+            this.btnComplete3.ForeColor = System.Drawing.Color.Black;
             this.btnComplete3.Location = new System.Drawing.Point(1803, 291);
             this.btnComplete3.Name = "btnComplete3";
             this.btnComplete3.Size = new System.Drawing.Size(150, 79);
@@ -189,10 +188,10 @@
             // 
             // btnCooking3
             // 
-            this.btnCooking3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(200)))), ((int)(((byte)(14)))));
+            this.btnCooking3.BackColor = System.Drawing.SystemColors.Control;
             this.btnCooking3.Enabled = false;
             this.btnCooking3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCooking3.ForeColor = System.Drawing.Color.White;
+            this.btnCooking3.ForeColor = System.Drawing.Color.Black;
             this.btnCooking3.Location = new System.Drawing.Point(1803, 191);
             this.btnCooking3.Name = "btnCooking3";
             this.btnCooking3.Size = new System.Drawing.Size(150, 79);
@@ -203,10 +202,10 @@
             // 
             // btnComplete4
             // 
-            this.btnComplete4.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnComplete4.BackColor = System.Drawing.SystemColors.Control;
             this.btnComplete4.Enabled = false;
             this.btnComplete4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnComplete4.ForeColor = System.Drawing.Color.White;
+            this.btnComplete4.ForeColor = System.Drawing.Color.Black;
             this.btnComplete4.Location = new System.Drawing.Point(488, 798);
             this.btnComplete4.Name = "btnComplete4";
             this.btnComplete4.Size = new System.Drawing.Size(150, 79);
@@ -217,10 +216,10 @@
             // 
             // btnCooking4
             // 
-            this.btnCooking4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(200)))), ((int)(((byte)(14)))));
+            this.btnCooking4.BackColor = System.Drawing.SystemColors.Control;
             this.btnCooking4.Enabled = false;
             this.btnCooking4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCooking4.ForeColor = System.Drawing.Color.White;
+            this.btnCooking4.ForeColor = System.Drawing.Color.Black;
             this.btnCooking4.Location = new System.Drawing.Point(488, 704);
             this.btnCooking4.Name = "btnCooking4";
             this.btnCooking4.Size = new System.Drawing.Size(150, 79);
@@ -231,10 +230,10 @@
             // 
             // btnComplete5
             // 
-            this.btnComplete5.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnComplete5.BackColor = System.Drawing.SystemColors.Control;
             this.btnComplete5.Enabled = false;
             this.btnComplete5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnComplete5.ForeColor = System.Drawing.Color.White;
+            this.btnComplete5.ForeColor = System.Drawing.Color.Black;
             this.btnComplete5.Location = new System.Drawing.Point(1145, 804);
             this.btnComplete5.Name = "btnComplete5";
             this.btnComplete5.Size = new System.Drawing.Size(150, 79);
@@ -245,10 +244,10 @@
             // 
             // btnCooking5
             // 
-            this.btnCooking5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(200)))), ((int)(((byte)(14)))));
+            this.btnCooking5.BackColor = System.Drawing.SystemColors.Control;
             this.btnCooking5.Enabled = false;
             this.btnCooking5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCooking5.ForeColor = System.Drawing.Color.White;
+            this.btnCooking5.ForeColor = System.Drawing.Color.Black;
             this.btnCooking5.Location = new System.Drawing.Point(1145, 706);
             this.btnCooking5.Name = "btnCooking5";
             this.btnCooking5.Size = new System.Drawing.Size(150, 79);
@@ -259,10 +258,10 @@
             // 
             // btnComplete6
             // 
-            this.btnComplete6.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnComplete6.BackColor = System.Drawing.SystemColors.Control;
             this.btnComplete6.Enabled = false;
             this.btnComplete6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnComplete6.ForeColor = System.Drawing.Color.White;
+            this.btnComplete6.ForeColor = System.Drawing.Color.Black;
             this.btnComplete6.Location = new System.Drawing.Point(1803, 806);
             this.btnComplete6.Name = "btnComplete6";
             this.btnComplete6.Size = new System.Drawing.Size(150, 79);
@@ -273,10 +272,10 @@
             // 
             // btnCooking6
             // 
-            this.btnCooking6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(200)))), ((int)(((byte)(14)))));
+            this.btnCooking6.BackColor = System.Drawing.SystemColors.Control;
             this.btnCooking6.Enabled = false;
             this.btnCooking6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCooking6.ForeColor = System.Drawing.Color.White;
+            this.btnCooking6.ForeColor = System.Drawing.Color.Black;
             this.btnCooking6.Location = new System.Drawing.Point(1803, 706);
             this.btnCooking6.Name = "btnCooking6";
             this.btnCooking6.Size = new System.Drawing.Size(150, 79);
@@ -294,7 +293,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1932, 1092);
             this.Controls.Add(this.btnComplete6);
             this.Controls.Add(this.btnCooking6);

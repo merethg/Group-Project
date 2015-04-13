@@ -22,6 +22,11 @@ namespace protype__groupwork_
         public FrmTableIdentification()
         {
             InitializeComponent();
+            this.BackgroundImage = Properties.Resources.bg2;
+            btnMenus.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnMenus.ForeColor = Color.White;
+            btnSetTable.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+            btnSetTable.ForeColor = Color.White;
         }
         
         #endregion
