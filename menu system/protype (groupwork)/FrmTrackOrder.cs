@@ -23,6 +23,7 @@ namespace protype__groupwork_
 
         #region (Initialisers)
         
+        //Constructor setting form item properties
         public FrmTrackOrder()
         {
             InitializeComponent();
@@ -40,6 +41,7 @@ namespace protype__groupwork_
             lblOrderMessage.Location = new Point(this.Width / 2 - lblOrderMessage.Width / 2, 150);
         }
 
+        //Constructor setting form item properties
         public FrmTrackOrder(int orderNumber)
         {
             InitializeComponent();
@@ -67,6 +69,7 @@ namespace protype__groupwork_
 
         #region (Timers)
         
+        //Retrieves order status and sets UI form items To represent the status
         private void trackTimer_Tick(object sender, EventArgs e)
         {
             intRefreshTime -= 1;
@@ -77,10 +80,8 @@ namespace protype__groupwork_
 
                 try
                 {
-                    //string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                    //MySqlCommand comand = new MySqlCommand("select Status from demo.order where Table_ID = '2' ;", myConn);
                     MySqlCommand comand = new MySqlCommand("select Status from demo.order where Order_ID = '" + intOrderNumber.ToString() + "' ;", myConn);
                     MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                     myConn.Open();
@@ -132,6 +133,7 @@ namespace protype__groupwork_
             }
         }
 
+        //closes form and opens welcome form
         private void tmrRelapseTimer_Tick(object sender, EventArgs e)
         {
             intRelapsTime -= 1;

@@ -34,6 +34,7 @@ namespace protype__groupwork_
 
         #region (Initialisers)
         
+        //Default constructor 
         public FrmPayment()
         {
             InitializeComponent();
@@ -42,6 +43,7 @@ namespace protype__groupwork_
             btnOrder.ForeColor = Color.White;
         }
 
+        //Default constructor setting form item properties 
         public FrmPayment(string total)
         {
             InitializeComponent();
@@ -51,6 +53,7 @@ namespace protype__groupwork_
             btnOrder.ForeColor = Color.White;
         }
 
+        //Default constructor setting form item properties 
         public FrmPayment(string total, frmMenus frmM)
         {
             InitializeComponent();
@@ -61,6 +64,7 @@ namespace protype__groupwork_
             this.BackgroundImage = Properties.Resources.bg2;
         }
 
+        //Default constructor setting form item properties 
         public FrmPayment(string total, frmMenus frmM, int orderNumber)
         {
             InitializeComponent();
@@ -72,10 +76,12 @@ namespace protype__groupwork_
             btnOrder.ForeColor = Color.White;
             this.BackgroundImage = Properties.Resources.bg2;
         }
+
         #endregion
 
         private void FrmPayment_Load(object sender, EventArgs e)
         {
+            //gets current date
             for (int year = DateTime.Now.Year; year <= startYear + 3; year++)
             {
                 cmbExpirationYear.Items.Add(year.ToString());
@@ -106,6 +112,7 @@ namespace protype__groupwork_
 
         #region (Buttons)
         
+        //submits payment details
         public void btnOrder_Click(object sender, EventArgs e)
         {
             bool error = false;
@@ -114,6 +121,7 @@ namespace protype__groupwork_
             lblExpirationDate.ForeColor = Color.Black;
             lblExpiratonDate.ForeColor = Color.Black;
 
+            //checks expiration validity
             if (cmbExpirationMonth.SelectedIndex == -1 || cmbExpirationYear.SelectedIndex == -1)
             {
                 error = true;

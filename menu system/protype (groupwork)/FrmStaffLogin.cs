@@ -29,6 +29,7 @@ namespace protype__groupwork_
             InitializeComponent();
         }
 
+        //Sets table number
         public FrmStaffLogin(int tableNumber)
         {
             InitializeComponent();
@@ -66,12 +67,16 @@ namespace protype__groupwork_
                 MessageBox.Show(ex.Message);
             }
 
+            //Updated table status
             if (count == 1)
             {
                 sqlClient.Update("table", "Table_Status = 'Available'", "Table_ID = '" + strTableNumber + "'");
+                this.Close();
             }
-
-            this.Close();
+            else
+            {
+                MessageBox.Show("Unable to update table status: Invalid Password");
+            }            
         }
     }
 }

@@ -36,7 +36,7 @@ namespace Restaurant_Application
             InitializeComponent();
         }
 
-        //overload constructor
+        //overload constructor setting form item properties
         public frmTableSelection(string strDiners)
         {
             InitializeComponent();
@@ -74,14 +74,18 @@ namespace Restaurant_Application
             pbTable20.Location = new Point(572, 150);
             #endregion
 
+            #region(Lable Positions)
 
             lblDiners.Location = new Point(pictureBox1.Left, 270);
             lblSearch.Location = new Point(pictureBox1.Left, 300);
             label1.Location = new Point(pictureBox1.Left, 330);
+            
+            #endregion
 
             lblDiners.Text = "Number of Diners: " + strDiners;
             searchValue = Convert.ToInt32(strDiners);
 
+            //Set value to query datatabse with
             if (searchValue % 2 == 1)
             {
                 searchValue += 1;
@@ -89,9 +93,9 @@ namespace Restaurant_Application
 
             lblSearch.Text = "Table For: " + searchValue.ToString();
 
+            //Gets availible tables from database using the value assigned for number of diners
             try
             {
-                //string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
                 MySqlConnection myConn = new MySqlConnection(myConnection);
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 MySqlCommand comand = new MySqlCommand("select Table_ID from demo.table where Table_Status = 'Available' and Seat_Numbers = '" + searchValue.ToString() + "'", myConn);  ////########
@@ -283,19 +287,19 @@ namespace Restaurant_Application
                     }
                 }
             #endregion
+
             }
         }
 
         #endregion
 
         #region(Buttons)
-
+        
+        //Updates status of table selected by user
         private void btnSelect_Click(object sender, EventArgs e)
         {
             if (customerChoice != "")
             {
-                //MySQLClient sqlClient = new MySQLClient("localhost", "demo", "Conrad", "Conrad2015", 3306);
-
                 sqlClient.Update("table", "Table_Status = 'Un-Available'", "Table_ID = '" + customerChoice + "'");
 
                 msg.Show();
@@ -303,6 +307,7 @@ namespace Restaurant_Application
             }
         }
         
+        //Cancel button returning to welcome form
         private void button1_Click(object sender, EventArgs e)
         {
             frmWelcome welcome = new frmWelcome();
@@ -311,12 +316,13 @@ namespace Restaurant_Application
         }
         
         #endregion
-               
+        
+        //Table selection buttons setting button colour additionaly setting the value of the chosen table
         #region (Table button press methods)
+
         private void pbTable1_Click(object sender, EventArgs e)
         {
             customerChoice = "1";
-            //pbTable1.BackColor = Color.LightGoldenrodYellow;
             pbTable1.BackColor = Color.Yellow;
             label1.Text = "Table selected: " + customerChoice;
 
@@ -3898,10 +3904,12 @@ namespace Restaurant_Application
                 pbTable1.BackColor = Color.Red;
             }
         }
+
         #endregion
 
         #region(Timers)
 
+        //Timer that shows message box and enables elapse timer
         private void tmrNoTables_Tick(object sender, EventArgs e)
         {
             noTablesElapseTime -= 1;
@@ -3915,6 +3923,7 @@ namespace Restaurant_Application
             }
         }
 
+        //Timer that returns to welcome form
         private void timer1_Tick(object sender, EventArgs e)
         {
             elapseTime -= 1;
@@ -3933,6 +3942,7 @@ namespace Restaurant_Application
 
         private void frmTableSelection_Load(object sender, EventArgs e)
         {
+            //Set noTable timer
             if (noTables)
             {
                 tmrNoTables.Enabled = true;

@@ -6,3 +6,4 @@ C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Programming Files\K
 C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Programming Files\Kitchen_Application\Kitchen_Application\obj\x86\Debug\Kitchen_Application.exe
 C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Programming Files\Kitchen_Application\Kitchen_Application\obj\x86\Debug\Kitchen_Application.pdb
 C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Programming Files\Kitchen_Application\Kitchen_Application\obj\x86\Debug\Kitchen_Application.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Programming Files\Kitchen_Application\Kitchen_Application\bin\Debug\MySql.Data.dll

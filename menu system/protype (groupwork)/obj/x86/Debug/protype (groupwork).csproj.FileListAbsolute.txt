@@ -68,3 +68,4 @@ C:\Users\Daniel\Documents\GitHub\Group-Project\menu system\protype (groupwork)\o
 C:\Users\Daniel\Documents\GitHub\Group-Project\menu system\protype (groupwork)\obj\x86\Debug\protype__groupwork_.FrmStaffLogin.resources
 C:\Users\Daniel\Documents\GitHub\Group-Project\menu system\protype (groupwork)\obj\x86\Debug\protype__groupwork_.FrmTableIdentification.resources
 C:\Users\Daniel\Documents\GitHub\Group-Project\menu system\protype (groupwork)\obj\x86\Debug\protype__groupwork_.FrmTrackOrder.resources
+C:\Users\Daniel\Documents\Education\HND\Year 2\Group Project\Programming Files\menu system\protype (groupwork)\bin\Debug\MySql.Data.dll

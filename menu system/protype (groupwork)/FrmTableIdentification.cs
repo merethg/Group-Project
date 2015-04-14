@@ -19,6 +19,7 @@ namespace protype__groupwork_
 
         #region (Initialisers
 
+        //Consturctor that sets form item properties
         public FrmTableIdentification()
         {
             InitializeComponent();
@@ -33,6 +34,7 @@ namespace protype__groupwork_
 
         #region (Buttons)
         
+        //showns menus
         private void btnMenus_Click(object sender, EventArgs e)
         {
             frmMenus menu = new frmMenus(tableNumber);
@@ -40,12 +42,14 @@ namespace protype__groupwork_
             this.Hide();
         }
 
+        //shows staff options
         private void btnSetTable_Click(object sender, EventArgs e)
         {
             FrmStaffLogin staff = new FrmStaffLogin(tableNumber);
             staff.Show();
         }
 
+        //shows hidden button
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             btnSetTable.Visible = true;

@@ -11,6 +11,7 @@ namespace Restaurant_Application
 {
     public partial class frmWelcome : Form
     {
+        //Constructor setting form item properties
         public frmWelcome()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace Restaurant_Application
 
         private void cmnOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //enables button if an item is selected
             if (cmnOptions.SelectedIndex > -1)
             {
                 btnAccept.Enabled = true;
@@ -37,9 +39,11 @@ namespace Restaurant_Application
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
+            //gets number of diners
             string numOfDiners = cmnOptions.SelectedItem.ToString();
             string[] diners = numOfDiners.Split(' ');
 
+            //Form transition passing number of diners
             frmTableSelection tbs = new frmTableSelection(diners[0]);
             tbs.Show();
             this.Hide();

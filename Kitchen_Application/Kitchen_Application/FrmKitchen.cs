@@ -70,11 +70,11 @@ namespace Kitchen_Application
 
         #region(Database Retrieval Methods)
 
+        //Retrieves active orders and table numbers from the database storing them in a string variable
         private void updateActiveOrders()
         {
             try
             {
-                //string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
                 MySqlConnection myConn = new MySqlConnection(myConnection);
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 MySqlCommand comand = new MySqlCommand("select * from demo.order where Status in ('Recieved','Processing');", myConn);
@@ -82,7 +82,6 @@ namespace Kitchen_Application
                 myConn.Open();
 
                 MySqlDataReader reader = comand.ExecuteReader();
-                //MessageBox.Show("Connected");
 
                 while (reader.Read())
                 {
@@ -98,6 +97,7 @@ namespace Kitchen_Application
             }
         }
 
+        //Retrieved each order that matches the order numbers within the active order string
         private void getOrders()
         {
             string[] orderNumbers = activeOrders.Split(' ');
@@ -107,6 +107,7 @@ namespace Kitchen_Application
             int i = -1;
             bool processing = false;
 
+            //checks to see that there are active orders
             if (activeOrders.Length >= 1)
             {
                 activeOrders = activeOrders.Remove(0, 1);
@@ -114,12 +115,11 @@ namespace Kitchen_Application
                 arTableNumbers = tableNumbers.Split(' ');
             }
 
-
+            //executed for each active order
             foreach (string orderID in orderNumbers)
             {
                 try
                 {
-                    //string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                     MySqlCommand comand = new MySqlCommand("select * from demo.order_item where Order_ID = '" + orderID + "' ;", myConn);
@@ -128,6 +128,7 @@ namespace Kitchen_Application
 
                     MySqlDataReader reader = comand.ExecuteReader();
 
+                    //adds order item to order string 
                     while (reader.Read())
                     {
                         order = order + "/" + reader.GetString(1);
@@ -142,7 +143,6 @@ namespace Kitchen_Application
 
                 try
                 {
-                    //string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
                     MySqlConnection myConn = new MySqlConnection(myConnection);
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                     MySqlCommand comand = new MySqlCommand("select Status from demo.order where Order_ID = '" + orderID + "' ;", myConn);
@@ -166,7 +166,7 @@ namespace Kitchen_Application
                     MessageBox.Show(ex.Message);
                 }
 
-
+                //Adds order to the first free listbox
                 if (order.Length >= 1)
                 {
                     order = order.Remove(0, 1);
@@ -180,6 +180,7 @@ namespace Kitchen_Application
                         lstOrderOne.Items.Add("");
                         lstOrderOne.Items.AddRange(orders);
 
+                        //disables button if order status is set to processing
                         if (!processing)
                         {
                             btnCooking1.Enabled = true;
@@ -276,6 +277,7 @@ namespace Kitchen_Application
 
                 order = "";
                 
+                //clears array
                 if (orders.Length >= 1)
                 {
                     Array.Clear(orders, 0, orders.Length);
@@ -290,16 +292,15 @@ namespace Kitchen_Application
 
         #region(Database Update Methods)
 
+        //Updates order statues to processing taking in an order number
         private void updateToProcessing(string orderNum)
         {
-            //string orderNumber = lstOrderOne.Items[0].ToString();
             string orderNumber = orderNum;
             string[] orderID = orderNumber.Split(' ');
             orderNumber = orderID[1];
 
             try
             {
-                //string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
                 MySqlConnection myConn = new MySqlConnection(myConnection);
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 MySqlCommand comand = new MySqlCommand("update demo.order set Status = 'Processing' where Order_ID = '" + orderNumber + "' ;", myConn);
@@ -320,16 +321,15 @@ namespace Kitchen_Application
             }
         }
 
+        //Updates order statues to complete taking in an order number 
         private void updateToComplete(string orderNum)
         {
-            //string orderNumber = lstOrderOne.Items[0].ToString();
             string orderNumber = orderNum;
             string[] orderID = orderNumber.Split(' ');
             orderNumber = orderID[1];
 
             try
             {
-                //string myConnection = "datasource=localhost;port=3306;username=Conrad;password=Conrad2015";
                 MySqlConnection myConn = new MySqlConnection(myConnection);
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 MySqlCommand comand = new MySqlCommand("update demo.order set Status = 'Complete' where Order_ID = '" + orderNumber + "' ;", myConn);
@@ -354,7 +354,9 @@ namespace Kitchen_Application
 
         #region(Buttons)
 
-        #region(Cooking Buttons)
+        #region(Cooking Buttons) 
+
+        //calls updedateToCooking method passing order ID
         private void btnCooking1_Click(object sender, EventArgs e)
         {
             updateToProcessing(lstOrderOne.Items[0].ToString());
@@ -394,6 +396,8 @@ namespace Kitchen_Application
         #endregion
 
         #region(Complete Buttons)
+
+        //calls updedateToComplete method passing order ID
         private void btnComplete_Click(object sender, EventArgs e)
         {
             updateToComplete(lstOrderOne.Items[0].ToString());
@@ -454,6 +458,7 @@ namespace Kitchen_Application
 
         #region(Timers)
 
+        //retrieves active orders and clears complete orders when time limie is reached
         private void tmrActiveOrder_Tick(object sender, EventArgs e)
         {
             activeOrderTime--;
@@ -512,6 +517,7 @@ namespace Kitchen_Application
             }
         }
 
+        //Delets all complete orders from the databse when a time limit is reached
         private void tmrRemoveTimer_Tick(object sender, EventArgs e)
         {
             removeTime--;
@@ -521,7 +527,6 @@ namespace Kitchen_Application
                 removeTime = 120;
 
                 sqlClient.Delete("order", "Status = 'Complete'");
-                //sqlClient.Update("order", "Status = 'Ready'", "Status = 'Complete'");
             }
         }
 

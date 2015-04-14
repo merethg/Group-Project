@@ -34,6 +34,9 @@ namespace protype__groupwork_
         {            
             InitializeComponent();
             this.BackgroundImage = Properties.Resources.bg2;
+
+            #region(Button Colour)
+
             btnAdd.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
             btnClear.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
             btnRemove.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
@@ -48,16 +51,21 @@ namespace protype__groupwork_
             button9.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19"); 
             button10.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19"); 
             button11.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19"); 
-            button12.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19"); 
-            
+            button12.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+
+            #endregion
+
         }
         
-        //Initialises form taking tableNumber brom parent form
+        //Initialises form taking tableNumber from parent form and setting form item settings
         public frmMenus(int tableNumber)
         {
             InitializeComponent();
             intTableNumber = tableNumber;
-            this.BackgroundImage = Properties.Resources.bg2; 
+            this.BackgroundImage = Properties.Resources.bg2;
+
+            #region(Button Colour)
+
             btnAdd.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
             btnClear.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
             btnRemove.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
@@ -73,6 +81,8 @@ namespace protype__groupwork_
             button10.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
             button11.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
             button12.BackColor = System.Drawing.ColorTranslator.FromHtml("#B5AF19");
+
+            #endregion
         }
         
         #endregion
@@ -113,6 +123,7 @@ namespace protype__groupwork_
             }
         }
 
+        //retrieves price of selected item and removes the item and retrieved price
         private void btnRemove_Click(object sender, EventArgs e)
         {           
             double priceToTake = 0.00;
@@ -159,6 +170,7 @@ namespace protype__groupwork_
 
         }
 
+        //adds selected items in order to the database with a unique order ID
         private void btnOrder_Click(object sender, EventArgs e)
         {
             int randomNumber = rnd.Next(0, 100);
@@ -169,6 +181,7 @@ namespace protype__groupwork_
             {
                 orderNumber = randomNumber;
                 count = 0;
+
                 try
                 {
                     string myConnection = conection;
@@ -219,6 +232,7 @@ namespace protype__groupwork_
             } while (count > 0);
         }
         
+        //Clears Order from the form
         private void btnClear_Click(object sender, EventArgs e)
         {
             listBox2.Items.Clear();
@@ -226,6 +240,7 @@ namespace protype__groupwork_
             total = 0.00;
         }
 
+        //alters selected index of listbox one depending on selection
         private void listBox1_Click(object sender, EventArgs e)
         {
             //if the user clicks on the description or price of an order it will 
@@ -329,8 +344,7 @@ namespace protype__groupwork_
 
         #region (food sub catagories)
 
-
-        //Pizza and Hot Drinks
+        //retreieves Pizza and Hot Drinks menus from database depending on tablbe check value
         private void button8_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
@@ -417,7 +431,7 @@ namespace protype__groupwork_
             }
         }
 
-        //Nibbles, Pasta and Desserts
+        //retrieves Nibbles, Pasta and Desserts menus from database depending on tablbe check value
         private void button9_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
@@ -532,7 +546,7 @@ namespace protype__groupwork_
             }
         }
 
-        //Meat and Soft Drinks
+        //retrieves Meat and Soft Drinks menus from database depending on tablbe check value
         private void button10_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
@@ -611,7 +625,7 @@ namespace protype__groupwork_
             }
         }
 
-        //Starters, Sides and Sundaes
+        //retrieves Starters, Sides and Sundaes menus from database depending on tablbe check value
         private void button11_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
@@ -726,7 +740,7 @@ namespace protype__groupwork_
             }
         }
 
-        //Salads and Alcohol
+        //retrieves Salads and Alcohol menus from database depending on tablbe check value
         private void button12_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
@@ -824,6 +838,7 @@ namespace protype__groupwork_
         
         #endregion
 
+        //Closed form when called
         public void closeForm()
         {
             this.Close();
